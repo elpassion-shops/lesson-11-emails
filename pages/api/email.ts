@@ -61,7 +61,7 @@ export default async function handler(
     res.status(200).json(votes);
   }
   if (req.method === 'POST') {
-    const html = renderHtml(req.body.mjml);
+    const html = renderHtml(req.body.to);
     const msg: IEmailMsg = {
       to: req.body.to,
       from: 'klaudiusz.witt@gmail.com',
