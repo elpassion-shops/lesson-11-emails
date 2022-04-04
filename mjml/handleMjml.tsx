@@ -11,12 +11,11 @@ import {
   MjmlImage,
   MjmlText,
   MjmlWrapper,
-} from "mjml-react";
-import { image } from "./images";
-
+} from 'mjml-react';
+import { image } from './images';
 
 export function renderHtml(email: string) {
-  const { html, } = render(
+  const { html } = render(
     <Mjml>
       <MjmlBody background-color="#eee" width={600}>
         <MjmlSection
@@ -45,15 +44,14 @@ export function renderHtml(email: string) {
             </MjmlText>
           </MjmlColumn>
         </MjmlSection>
-        <MjmlWrapper padding-top="0" padding-bottom="0" css-class="body-section">
+        <MjmlWrapper
+          padding-top="0"
+          padding-bottom="0"
+          css-class="body-section"
+        >
           <MjmlSection background-color="#ffffff">
             <MjmlColumn width="100%">
-              <MjmlImage
-              src={image}
-              alt=""
-              align="center"
-              width="250px"
-            />
+              <MjmlImage src={image} alt="" align="center" width="250px" />
               <MjmlText color="#637381" font-size="16px" align="center">
                 Naciśnij na jeden z przycisków aby ocenić!
               </MjmlText>
@@ -66,6 +64,7 @@ export function renderHtml(email: string) {
                   font-family="Helvetica"
                   background-color="#00ffa3"
                   color="black"
+                  font-weight="900"
                   href={`http://localhost:3000/api/email?email=${email}&vote=${number}`}
                 >
                   {number}
@@ -74,32 +73,36 @@ export function renderHtml(email: string) {
             ))}
           </MjmlSection>
         </MjmlWrapper>
+
+        <MjmlSection>
+          <MjmlColumn>
+            <MjmlText
+              padding-top="40px"
+              align="center"
+              color="#637381"
+              font-size="12px"
+            >
+              EL Passion Next Sp. z o.o.
+              <br />
+              Grzybowska 62, 00-844 Warsaw, Poland
+              <br />{' '}
+              <a
+                href="https://www.elpassion.com/"
+                style={{
+                  color: '#05c680',
+                  textDecoration: 'none',
+                  fontWeight: '600',
+                }}
+              >
+                Made by Monika, Klaudiusz and Krystian
+              </a>
+            </MjmlText>
+          </MjmlColumn>
+        </MjmlSection>
       </MjmlBody>
     </Mjml>,
-    { validationLevel: "soft" }
+    { validationLevel: 'soft' }
   );
 
   return html;
 }
-
-// import Mjml2html from 'Mjml';
-
-// /*
-//   Compile an Mjml string
-// */
-// const htmlOutput = Mjml2html(
-//   `
-//   <Mjml>
-//     <MjmlBody>
-//       <MjmlSection>
-//         <MjmlColumn>
-//           <MjmlText>
-//             Hello World!
-//           </MjmlText>
-//         </MjmlColumn>
-//       </MjmlSection>
-//     </MjmlBody>
-//   </Mjml>
-// `
-// );
-
