@@ -7,6 +7,7 @@ import {
   Container,
   Box,
   CardMedia,
+  Typography,
 } from "@mui/material";
 
 import type { NextPage } from "next";
@@ -51,12 +52,20 @@ const Home: NextPage = () => {
   return (
     <Container maxWidth="sm" style={{ marginTop: "16px" }}>
       <Card sx={{ minWidth: 275 }}>
+        <CardContent>
         <CardMedia
           component="img"
           height="400"
           image="/img/undraw_Certification_re_ifll.png"
           alt="img"
         />
+        <Typography align= 'center' gutterBottom variant="h5" component="div">
+          Witaj!
+        </Typography>
+        <Typography  align= 'center' variant="body2" color="text.secondary">
+          Z racji na ukończenie przez Ciebie naszego planu stażówego, chcielibyśmy porposić Cie o wypełnienei ankiety na jego temat ;)
+
+        </Typography>
         <form onSubmit={submit}>
           <Box
             sx={{
@@ -68,7 +77,7 @@ const Home: NextPage = () => {
               borderRadius: 1,
             }}
           >
-            <CardContent>
+            
               <TextField
                 onChange={emailAddressChangeHandler}
                 fullWidth
@@ -78,7 +87,6 @@ const Home: NextPage = () => {
                 error={!!emailError}
                 helperText={emailError}
               />
-            </CardContent>
           </Box>
           <Box
             sx={{
@@ -89,12 +97,13 @@ const Home: NextPage = () => {
               bgcolor: "background.paper",
               borderRadius: 1,
             }}
-          >
+            >
             <Button variant="contained" type="submit" disabled={!!emailError}>
               Submit
             </Button>
           </Box>
         </form>
+      </CardContent>
       </Card>
     </Container>
   );
