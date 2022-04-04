@@ -14,6 +14,11 @@ export interface IEmailMsg {
   html: string;
 }
 
+export interface IEmailVote {
+  email: string,
+  vote: number,
+}
+
 export class GetEmailAddress implements IGetEmailAddress {
   async send(request: IEmailAddress) {
     fetch('http://localhost:3000/api/email', {

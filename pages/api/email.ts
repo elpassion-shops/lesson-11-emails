@@ -1,16 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
 import nodemailerSendgrid from 'nodemailer-sendgrid';
-import * as sendgrid from "@sendgrid/mail";
-import {send} from "@sendgrid/mail";
 import {IEmailMsg} from "../../interfaces/email";
+import {config} from '../../config/configuration';
 
-const key = process.env.SENDGRID_API_KEY as string;
 
 const sendEmail = async (msg: IEmailMsg) => {
   const transporter = nodemailer.createTransport(
     nodemailerSendgrid({
-      apiKey: key,
+      apiKey: config.sendGrid.api_key as string,
     }),
   );
   return await transporter.sendMail(msg);
@@ -19,9 +17,12 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const transporter = nodemailer.createTransport(nodemailerSendgrid({
-        apiKey: key
-    }));
+    if(req.method === 'GET') {
+        const data = {
+            email: req.query.email,
+            vote: req.query.vote,
+        }
+    }
     if(req.method === 'POST') {
         const msg: IEmailMsg = {
             to: req.body.to,
