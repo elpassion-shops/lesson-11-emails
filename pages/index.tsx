@@ -29,7 +29,7 @@ const Home: NextPage = () => {
     if (error) return;
     console.log(email);
 
-    new GetEmailAddress().send({ to: email, html: "dwa" });
+    new GetEmailAddress().send({ to: email });
 
     setEmail("");
   };
