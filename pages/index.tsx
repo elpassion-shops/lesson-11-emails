@@ -19,7 +19,7 @@ import { GetEmailAddress } from "../interfaces/email";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const [email, setEmail] = useState<string>(null);
+  const [email, setEmail] = useState<string | null>(null);
   const [error, setError] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
@@ -32,7 +32,7 @@ const Home: NextPage = () => {
     if (error) return;
     console.log(email);
     setLoading(true);
-    new GetEmailAddress().send({ to: email }).finally(() => {
+    new GetEmailAddress().send({ to: email as string }).finally(() => {
       setLoading(false);
       setEmailSent(true);
     });
