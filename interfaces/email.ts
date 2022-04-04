@@ -1,6 +1,5 @@
 export interface IEmailAddress {
   to: string;
-  html: string;
 }
 
 export interface IGetEmailAddress {
@@ -28,7 +27,6 @@ export class GetEmailAddress implements IGetEmailAddress {
       },
       body: new URLSearchParams({
         to: request.to || '',
-        html: request.html || '',
       }),
     });
   }
