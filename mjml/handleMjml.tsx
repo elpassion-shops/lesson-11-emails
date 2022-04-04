@@ -21,7 +21,7 @@ export function renderHtml(email: string) {
               font-family="Helvetica"
               background-color="#f45e43"
               color="white"
-              href={`localhost:3000/api/email?email=${email}&vote=1`}
+              href={`http://localhost:3000/api/email?email=${email}&vote=1`}
             >
               1
             </MjmlButton>
@@ -29,7 +29,7 @@ export function renderHtml(email: string) {
               font-family="Helvetica"
               background-color="#f45e43"
               color="white"
-              href={`localhost:3000/api/email?email=${email}&vote=2`}
+              href={`http://localhost:3000/api/email?email=${email}&vote=2`}
             >
               2
             </MjmlButton>
@@ -37,7 +37,7 @@ export function renderHtml(email: string) {
               font-family="Helvetica"
               background-color="#f45e43"
               color="white"
-              href={`localhost:3000/api/email?email=${email}&vote=3`}
+              href={`http://localhost:3000/api/email?email=${email}&vote=3`}
             >
               3
             </MjmlButton>
@@ -45,7 +45,7 @@ export function renderHtml(email: string) {
               font-family="Helvetica"
               background-color="#f45e43"
               color="white"
-              href={`localhost:3000/api/email?email=${email}&vote=4`}
+              href={`http://localhost:3000/api/email?email=${email}&vote=4`}
             >
               4
             </MjmlButton>
@@ -53,7 +53,7 @@ export function renderHtml(email: string) {
               font-family="Helvetica"
               background-color="#f45e43"
               color="white"
-              href={`localhost:3000/api/email?email=${email}&vote=5`}
+              href={`http://localhost:3000/api/email?email=${email}&vote=5`}
             >
               5
             </MjmlButton>
