@@ -55,7 +55,7 @@ const Home: NextPage = () => {
         <CardContent>
         <CardMedia
           component="img"
-          height="400"
+          height="auto"
           image="/img/undraw_Certification_re_ifll.png"
           alt="img"
         />
