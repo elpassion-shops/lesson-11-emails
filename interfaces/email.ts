@@ -7,11 +7,14 @@ export interface IGetEmailAddress {
 }
 
 export class GetEmailAddress implements IGetEmailAddress {
-  async send(request: IEmailAddress): Promise<any> {
-    fetch('http://localhost:3000/api/email?', {
+  async send(request: IEmailAddress) {
+    fetch('http://localhost:3000/api/email', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+      },
       body: new URLSearchParams({
-        send: request.to || '',
+        to: request.to || '',
       }),
     });
   }
