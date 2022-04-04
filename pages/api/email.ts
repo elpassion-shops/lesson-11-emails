@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 import nodemailerSendgrid from 'nodemailer-sendgrid';
 import {IEmailMsg, IEmailVote} from "../../interfaces/email";
 import {config} from '../../config/configuration';
-import { Pool, Client } from 'pg';
+import { Client } from 'pg';
 
 
 
@@ -25,11 +25,11 @@ export default async function handler(
             vote: Number(req.query.vote),
         }
         const client = new Client({
-            user: 'postgres',
-            host: 'localhost',
-            database: 'postgres',
-            password: 'secret',
-            port: 5432,
+            user: config.database.username,
+            host: config.database.host,
+            database: config.database.database,
+            password: config.database.password,
+            port: config.database.port,
         });
         await client.connect();
         // Create table if not exists
@@ -44,9 +44,9 @@ export default async function handler(
             await client.query(`INSERT INTO votes (email, vote) VALUES ($1, $2)`, [data.email, data.vote]);
         } else {
             await client.query(`UPDATE votes SET vote = $1 WHERE email = $2`, [data.vote, data.email]);
-            res.status(400).json({
-                error: 'You already voted, and your vote changed',
-            });
+            res.status(400).json(
+                'You already voted, and your vote changed',
+            );
             return;
         }
         // Get all votes
