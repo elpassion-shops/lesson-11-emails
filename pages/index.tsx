@@ -8,6 +8,19 @@ import {
   Box,
 } from '@mui/material';
 
+import {
+  render,
+  Mjml,
+  MjmlHead,
+  MjmlTitle,
+  MjmlPreview,
+  MjmlBody,
+  MjmlSection,
+  MjmlColumn,
+  MjmlButton,
+  MjmlImage,
+} from 'mjml-react';
+
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -15,10 +28,60 @@ import { ChangeEvent, useState } from 'react';
 import { GetEmailAddress } from '../interfaces/email';
 import styles from '../styles/Home.module.css';
 
-const HTML = ``;
-
 const Home: NextPage = () => {
   const [email, setEmail] = useState<string>('');
+
+  const { html, errors } = render(
+    <Mjml>
+      <MjmlBody>
+        <MjmlSection>
+          <MjmlColumn>
+            <MjmlButton
+              font-family="Helvetica"
+              background-color="#f45e43"
+              color="white"
+              href={`localhost:3000/api/email?email=${email}&vote=1`}
+            >
+              1
+            </MjmlButton>
+            <MjmlButton
+              font-family="Helvetica"
+              background-color="#f45e43"
+              color="white"
+              href={`localhost:3000/api/email?email=${email}&vote=2`}
+            >
+              2
+            </MjmlButton>
+            <MjmlButton
+              font-family="Helvetica"
+              background-color="#f45e43"
+              color="white"
+              href={`localhost:3000/api/email?email=${email}&vote=3`}
+            >
+              3
+            </MjmlButton>
+            <MjmlButton
+              font-family="Helvetica"
+              background-color="#f45e43"
+              color="white"
+              href={`localhost:3000/api/email?email=${email}&vote=4`}
+            >
+              4
+            </MjmlButton>
+            <MjmlButton
+              font-family="Helvetica"
+              background-color="#f45e43"
+              color="white"
+              href={`localhost:3000/api/email?email=${email}&vote=5`}
+            >
+              5
+            </MjmlButton>
+          </MjmlColumn>
+        </MjmlSection>
+      </MjmlBody>
+    </Mjml>,
+    { validationLevel: 'soft' }
+  );
 
   const emailAddressChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -27,7 +90,7 @@ const Home: NextPage = () => {
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    new GetEmailAddress().send({ to: email, html: HTML });
+    new GetEmailAddress().send({ to: email, html: html });
 
     setEmail('');
   };
