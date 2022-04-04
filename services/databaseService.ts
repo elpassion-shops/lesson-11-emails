@@ -1,5 +1,5 @@
-import pg, {ClientConfig, QueryResult} from 'pg';
-class PostgresClient {
+import pg, {QueryResult} from 'pg';
+class DatabaseService {
     private client: pg.Client;
     constructor(user: string, password: string, host: string, port: number, database: string) {
         this.client = new pg.Client({
@@ -14,7 +14,7 @@ class PostgresClient {
         await this.client.connect();
     }
     public async query(query: string, values?: any[]): Promise<pg.QueryResult> {
-        return await this.client.query(query, values);
+        return this.client.query(query, values);
     }
     public async end(): Promise<void> {
         await this.client.end();
@@ -22,9 +22,13 @@ class PostgresClient {
 }
 
 export class VoteDbClient {
-    private client: PostgresClient;
+    private client: DatabaseService;
     constructor(client: any) {
-        this.client = new PostgresClient(client.user, client.password, client.host, client.port, client.database);
+        this.client = new DatabaseService(client.user, client.password, client.host, client.port, client.database);
+    }
+    public async run() {
+        await this.client.connect();
+        await this.createTable();
     }
     public async connect(): Promise<void> {
         await this.client.connect();
@@ -52,5 +56,9 @@ export class VoteDbClient {
     }
     public async getVote(email: string): Promise<pg.QueryResult> {
         return await this.client.query(`SELECT * FROM votes WHERE email = '${email}'`);
+    }
+
+    public async getAverageVote(): Promise<pg.QueryResult> {
+        return await this.client.query(`SELECT AVG(vote) FROM votes`);
     }
 }
