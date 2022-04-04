@@ -1,6 +1,7 @@
 import { Client } from "pg";
 import { config } from "../config/configuration";
 import { VoteDbClient } from "../services/databaseService";
+import { IEmailVote } from "../interfaces/email";
 
 export function createDbClient(): Client {
   return new Client({
@@ -12,10 +13,11 @@ export function createDbClient(): Client {
   });
 }
 
-export async function createVoteClient(data: any): Promise<VoteDbClient> {
+export async function createVoteClient(
+  data: IEmailVote
+): Promise<VoteDbClient> {
   const client = createDbClient();
-  const voteClient = await (
+  return await (
     await (await new VoteDbClient(client).connect()).createTable()
   ).insertVote(data.email, data.vote);
-  return voteClient;
 }

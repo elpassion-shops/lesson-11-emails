@@ -1,12 +1,13 @@
-import pg, { QueryResult } from "pg";
+import pg, { Client } from "pg";
 class DatabaseService {
   private client: pg.Client;
+
   constructor(
-    user: string,
-    password: string,
+    user: string | undefined,
+    password: string | undefined,
     host: string,
     port: number,
-    database: string
+    database: string | undefined
   ) {
     this.client = new pg.Client({
       user,
@@ -19,7 +20,10 @@ class DatabaseService {
   public async connect(): Promise<void> {
     await this.client.connect();
   }
-  public async query(query: string, values?: any[]): Promise<pg.QueryResult> {
+  public async query(
+    query: string,
+    values?: (string | number)[]
+  ): Promise<pg.QueryResult> {
     return this.client.query(query, values);
   }
   public async end(): Promise<void> {
@@ -29,7 +33,7 @@ class DatabaseService {
 
 export class VoteDbClient {
   private client: DatabaseService;
-  constructor(client: any) {
+  constructor(client: Client) {
     this.client = new DatabaseService(
       client.user,
       client.password,
