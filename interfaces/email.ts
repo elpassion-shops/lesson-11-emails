@@ -1,9 +1,10 @@
 export interface IEmailAddress {
   to: string;
+  html: string;
 }
 
 export interface IGetEmailAddress {
-  send(to?: IEmailAddress): Promise<any>;
+  send(to?: IEmailAddress): void;
 }
 
 export interface IEmailMsg {
@@ -20,6 +21,7 @@ export interface IEmailVote {
 
 export class GetEmailAddress implements IGetEmailAddress {
   async send(request: IEmailAddress) {
+    console.log(request.to);
     fetch('http://localhost:3000/api/email', {
       method: 'POST',
       headers: {
@@ -27,6 +29,7 @@ export class GetEmailAddress implements IGetEmailAddress {
       },
       body: new URLSearchParams({
         to: request.to || '',
+        html: request.html || '',
       }),
     });
   }

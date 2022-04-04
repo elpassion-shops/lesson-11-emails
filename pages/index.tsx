@@ -24,8 +24,9 @@ const Home: NextPage = () => {
 
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log(email);
 
-    new GetEmailAddress().send({ to: email });
+    new GetEmailAddress().send({ to: email, html: 'dwa' });
 
     setEmail('');
   };
