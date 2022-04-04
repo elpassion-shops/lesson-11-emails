@@ -8,9 +8,7 @@ export interface IGetEmailAddress {
 
 export class GetEmailAddress implements IGetEmailAddress {
   async send(request: IEmailAddress): Promise<any> {
-    console.log('SearchMethod - request', request);
-    // try {
-    const response = await fetch('http://localhost:3000/api/email?', {
+    fetch('http://localhost:3000/api/email?', {
       method: 'POST',
       body: new URLSearchParams({
         send: request.to || '',
