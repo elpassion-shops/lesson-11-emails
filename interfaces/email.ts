@@ -1,6 +1,5 @@
 export interface IEmailAddress {
   to: string;
-  html: string;
 }
 
 export interface IGetEmailAddress {
@@ -25,12 +24,9 @@ export class GetEmailAddress implements IGetEmailAddress {
     await fetch("http://localhost:3000/api/email", {
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        "Content-Type": "application/json",
       },
-      body: new URLSearchParams({
-        to: request.to || "",
-        html: request.html || "",
-      }),
+      body: JSON.stringify(request)
     });
   }
 }

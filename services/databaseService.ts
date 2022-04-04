@@ -73,6 +73,7 @@ export class VoteDbClient {
       return this;
     }
   }
+
   public async updateVote(
     email: string,
     vote: number
