@@ -11,13 +11,13 @@ import {
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useMemo, useState } from 'react';
 import { GetEmailAddress } from '../interfaces/email';
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
   const [email, setEmail] = useState<string>('');
-
+  const [error, setError] = useState(false);
   const emailAddressChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
@@ -30,6 +30,14 @@ const Home: NextPage = () => {
 
     setEmail('');
   };
+
+  const emailError = useMemo(()=>{
+    const emailRegex = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])$/;
+    if(!email?.trim()){
+      return "Email is required";
+    }
+    return emailRegex.test(email) ? null : 'Please provide valid email'
+  }, [email])
 
   // useEffect(() => {
   //   new SearchMethod().search({ search: enteredSearch }).then((response) => {
@@ -58,6 +66,8 @@ const Home: NextPage = () => {
                 label="e-mail"
                 id="fullWidth"
                 value={email}
+                error ={!!emailError}
+                helperText={emailError}
               />
             </CardContent>
           </Box>
