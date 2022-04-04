@@ -5,6 +5,7 @@ import { IEmailMsg, IEmailVote } from '../../interfaces/email';
 import { config } from '../../config/configuration';
 import { Client } from 'pg';
 import {renderHtml} from "../../mjml/handleMjml";
+import {VoteDbClient} from "../../services/postgresClient";
 
 const sendEmail = async (msg: IEmailMsg) => {
   const transporter = nodemailer.createTransport(
@@ -14,6 +15,7 @@ const sendEmail = async (msg: IEmailMsg) => {
   );
   return await transporter.sendMail(msg);
 };
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -30,35 +32,17 @@ export default async function handler(
       password: config.database.password,
       port: config.database.port,
     });
-    await client.connect();
-    // Create table if not exists
-    await client.query(`CREATE TABLE IF NOT EXISTS votes (
-            id SERIAL PRIMARY KEY,
-            email VARCHAR(255) NOT NULL,
-            vote INT NOT NULL
-        )`);
-    // Check if email didnt vote before if no insert new vote
-    const result = await client.query(`SELECT * FROM votes WHERE email = $1`, [
-      data.email,
-    ]);
-    if (result.rows.length === 0) {
-      await client.query(`INSERT INTO votes (email, vote) VALUES ($1, $2)`, [
-        data.email,
-        data.vote,
-      ]);
-    } else {
-      await client.query(`UPDATE votes SET vote = $1 WHERE email = $2`, [
-        data.vote,
-        data.email,
-      ]);
-      res.status(400).json('You already voted, and your vote changed');
-      return;
-    }
-    // Get all votes
-    const votes = await client.query(`SELECT * FROM votes`);
-    await client.end();
-    console.log(`Email: ${data.email} vote: ${data.vote}`);
-    res.status(200).json(votes);
+    const voteClient = new VoteDbClient(client);
+    await voteClient.connect()
+    await voteClient.createTable();
+    await voteClient.insertVote(data.email, data.vote);
+    const vote = await voteClient.getVote(data.email);
+    await voteClient.end()
+    console.log(vote)
+    res.status(200).json({
+      message: 'Vote saved',
+      vote: vote.rows,
+    });
   }
   if (req.method === 'POST') {
     const html = renderHtml(req.body.to);
