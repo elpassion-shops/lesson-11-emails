@@ -9,6 +9,8 @@ import {
   CardMedia,
   Typography,
   CircularProgress,
+  ThemeProvider,
+  createTheme,
 } from "@mui/material";
 
 import type { NextPage } from "next";
@@ -17,6 +19,13 @@ import Image from "next/image";
 import { ChangeEvent, useMemo, useState } from "react";
 import { GetEmailAddress } from "../interfaces/email";
 import styles from "../styles/Home.module.css";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#00ffa3"}
+  },
+});
 
 const Home: NextPage = () => {
   const [email, setEmail] = useState<string | null>(null);
@@ -57,82 +66,94 @@ const Home: NextPage = () => {
   // }, [enteredSearch]);
 
   return (
-    <Container maxWidth="sm" style={{ marginTop: "16px" }}>
-      <Card sx={{ minWidth: 275 }}>
-        <CardContent>
-          {!emailSent && (
-            <>
-              <CardMedia
-                component="img"
-                height="auto"
-                image="/img/undraw_Certification_re_ifll.png"
-                alt="img"
-              />
-              <Typography
-                align="center"
-                gutterBottom
-                variant="h5"
-                component="div"
-              >
-                Witaj!
-              </Typography>
-              <Typography align="center" variant="body2" color="text.secondary">
-                Z racji na ukończenie przez Ciebie naszego planu stażówego,
-                chcielibyśmy porposić Cie o wypełnienei ankiety na jego temat ;)
-              </Typography>
-              <form onSubmit={submit}>
-                <Box
+    <ThemeProvider theme={theme}>
+      <Container maxWidth="sm" style={{ marginTop: "16px" }}>
+        <Card sx={{ minWidth: 275 }}>
+          <CardContent>
+            {!emailSent && (
+              <>
+                <CardMedia
+                  component="img"
+                  image="/img/undraw_Certification_re_ifll.png"
+                  alt="img"
                   sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    p: 1,
-                    m: 1,
-                    bgcolor: "background.paper",
-                    borderRadius: 1,
+                    width: "100%",
+                    maxWidth: 300,
+                    height: "auto",
+                    margin: "auto",
                   }}
+                />
+                <Typography
+                  align="center"
+                  gutterBottom
+                  variant="h5"
+                  component="div"
                 >
-                  <TextField
-                    onChange={emailAddressChangeHandler}
-                    fullWidth
-                    label="e-mail"
-                    id="fullWidth"
-                    value={email}
-                    error={!!emailError}
-                    helperText={emailError}
-                  />
-                </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    p: 1,
-                    m: 1,
-                    bgcolor: "background.paper",
-                    borderRadius: 1,
-                  }}
+                  Witaj!
+                </Typography>
+                <Typography
+                  align="center"
+                  variant="body2"
+                  color="text.secondary"
                 >
-                  <Button
-                    fullWidth
-                    variant="contained"
-                    type="submit"
-                    disabled={!!emailError || isLoading}
+                  Z racji na ukończenie przez Ciebie naszego planu stażówego,
+                  chcielibyśmy porposić Cie o wypełnienei ankiety na jego temat
+                  ;)
+                </Typography>
+                <form onSubmit={submit}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      p: 1,
+                      m: 1,
+                      bgcolor: "background.paper",
+                      borderRadius: 1,
+                    }}
                   >
-                    {isLoading ? (
-                      <>
-                        <CircularProgress size={24} />
-                      </>
-                    ) : (
-                      "Submit"
-                    )}
-                  </Button>
-                </Box>
-              </form>
-            </>
-          )}
-          {emailSent && <>Poszło</>}
-        </CardContent>
-      </Card>
-    </Container>
+                    <TextField
+                      onChange={emailAddressChangeHandler}
+                      fullWidth
+                      label="e-mail"
+                      id="fullWidth"
+                      value={email}
+                      error={!!emailError}
+                      helperText={emailError}
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      p: 1,
+                      m: 1,
+                      bgcolor: "background.paper",
+                      borderRadius: 1,
+                    }}
+                  >
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      type="submit"
+                      disabled={!!emailError || isLoading}
+                    >
+                      {isLoading ? (
+                        <>
+                          <CircularProgress size={24} />
+                        </>
+                      ) : (
+                        "Submit"
+                      )}
+                    </Button>
+                  </Box>
+                </form>
+              </>
+            )}
+            {emailSent && <>Poszło</>}
+          </CardContent>
+        </Card>
+      </Container>
+    </ThemeProvider>
   );
 };
 
