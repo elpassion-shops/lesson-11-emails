@@ -8,6 +8,7 @@ import {
   Box,
   CardMedia,
   Typography,
+  CircularProgress,
 } from "@mui/material";
 
 import type { NextPage } from "next";
@@ -18,8 +19,10 @@ import { GetEmailAddress } from "../interfaces/email";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const [email, setEmail] = useState<string>("");
+  const [email, setEmail] = useState<string>(null);
   const [error, setError] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
   const emailAddressChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
@@ -28,13 +31,17 @@ const Home: NextPage = () => {
     event.preventDefault();
     if (error) return;
     console.log(email);
-
-    new GetEmailAddress().send({ to: email });
-
-    setEmail("");
+    setLoading(true);
+    new GetEmailAddress().send({ to: email }).finally(() => {
+      setLoading(false);
+      setEmailSent(true);
+    });
   };
 
   const emailError = useMemo(() => {
+    if (email === null) {
+      return null;
+    }
     const emailRegex =
       /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])$/;
     if (!email?.trim()) {
@@ -53,57 +60,77 @@ const Home: NextPage = () => {
     <Container maxWidth="sm" style={{ marginTop: "16px" }}>
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
-        <CardMedia
-          component="img"
-          height="auto"
-          image="/img/undraw_Certification_re_ifll.png"
-          alt="img"
-        />
-        <Typography align= 'center' gutterBottom variant="h5" component="div">
-          Witaj!
-        </Typography>
-        <Typography  align= 'center' variant="body2" color="text.secondary">
-          Z racji na ukończenie przez Ciebie naszego planu stażówego, chcielibyśmy porposić Cie o wypełnienei ankiety na jego temat ;)
-
-        </Typography>
-        <form onSubmit={submit}>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              p: 1,
-              m: 1,
-              bgcolor: "background.paper",
-              borderRadius: 1,
-            }}
-          >
-            
-              <TextField
-                onChange={emailAddressChangeHandler}
-                fullWidth
-                label="e-mail"
-                id="fullWidth"
-                value={email}
-                error={!!emailError}
-                helperText={emailError}
+          {!emailSent && (
+            <>
+              <CardMedia
+                component="img"
+                height="auto"
+                image="/img/undraw_Certification_re_ifll.png"
+                alt="img"
               />
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              p: 1,
-              m: 1,
-              bgcolor: "background.paper",
-              borderRadius: 1,
-            }}
-            >
-            <Button variant="contained" type="submit" disabled={!!emailError}>
-              Submit
-            </Button>
-          </Box>
-        </form>
-      </CardContent>
+              <Typography
+                align="center"
+                gutterBottom
+                variant="h5"
+                component="div"
+              >
+                Witaj!
+              </Typography>
+              <Typography align="center" variant="body2" color="text.secondary">
+                Z racji na ukończenie przez Ciebie naszego planu stażówego,
+                chcielibyśmy porposić Cie o wypełnienei ankiety na jego temat ;)
+              </Typography>
+              <form onSubmit={submit}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    p: 1,
+                    m: 1,
+                    bgcolor: "background.paper",
+                    borderRadius: 1,
+                  }}
+                >
+                  <TextField
+                    onChange={emailAddressChangeHandler}
+                    fullWidth
+                    label="e-mail"
+                    id="fullWidth"
+                    value={email}
+                    error={!!emailError}
+                    helperText={emailError}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    p: 1,
+                    m: 1,
+                    bgcolor: "background.paper",
+                    borderRadius: 1,
+                  }}
+                >
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    type="submit"
+                    disabled={!!emailError || isLoading}
+                  >
+                    {isLoading ? (
+                      <>
+                        <CircularProgress size={24} />
+                      </>
+                    ) : (
+                      "Submit"
+                    )}
+                  </Button>
+                </Box>
+              </form>
+            </>
+          )}
+          {emailSent && <>Poszło</>}
+        </CardContent>
       </Card>
     </Container>
   );
