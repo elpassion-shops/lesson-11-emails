@@ -1,5 +1,6 @@
 export interface IEmailAddress {
   to: string;
+  html: string;
 }
 
 export interface IGetEmailAddress {

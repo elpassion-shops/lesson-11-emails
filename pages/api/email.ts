@@ -18,9 +18,7 @@ export default function handler(
             to: req.body.to,
             from: 'klaudiusz.witt@gmail.com',
             subject: 'BrrBrrBru',
-            test: 'BrrBrrBru',
-            html: '<h1>BrrBrrBru</h1>' +
-                '<p>YoyoYoYou</p>',
+            html: req.body.html === null ? 'Null' : req.body.html,
         }
         transporter.sendMail(msg, (err, info) => {
             if(err) {
