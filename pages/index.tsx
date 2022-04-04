@@ -24,6 +24,7 @@ const Home: NextPage = () => {
 
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if(error) return 
     console.log(email);
 
     new GetEmailAddress().send({ to: email, html: 'dwa' });
@@ -37,6 +38,7 @@ const Home: NextPage = () => {
       return "Email is required";
     }
     return emailRegex.test(email) ? null : 'Please provide valid email'
+
   }, [email])
 
   // useEffect(() => {
@@ -81,7 +83,7 @@ const Home: NextPage = () => {
               borderRadius: 1,
             }}
           >
-            <Button variant="contained" type="submit" disableElevation>
+            <Button variant="contained" type="submit" disabled={!!emailError}>
               Submit
             </Button>
           </Box>
