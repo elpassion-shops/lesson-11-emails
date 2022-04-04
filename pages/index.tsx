@@ -6,17 +6,18 @@ import {
   Button,
   Container,
   Box,
-} from '@mui/material';
+  CardMedia,
+} from "@mui/material";
 
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import { ChangeEvent, useMemo, useState } from 'react';
-import { GetEmailAddress } from '../interfaces/email';
-import styles from '../styles/Home.module.css';
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import { ChangeEvent, useMemo, useState } from "react";
+import { GetEmailAddress } from "../interfaces/email";
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const [email, setEmail] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
   const [error, setError] = useState(false);
   const emailAddressChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -24,22 +25,22 @@ const Home: NextPage = () => {
 
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if(error) return 
+    if (error) return;
     console.log(email);
 
-    new GetEmailAddress().send({ to: email, html: 'dwa' });
+    new GetEmailAddress().send({ to: email, html: "dwa" });
 
-    setEmail('');
+    setEmail("");
   };
 
-  const emailError = useMemo(()=>{
-    const emailRegex = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])$/;
-    if(!email?.trim()){
+  const emailError = useMemo(() => {
+    const emailRegex =
+      /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])$/;
+    if (!email?.trim()) {
       return "Email is required";
     }
-    return emailRegex.test(email) ? null : 'Please provide valid email'
-
-  }, [email])
+    return emailRegex.test(email) ? null : "Please provide valid email";
+  }, [email]);
 
   // useEffect(() => {
   //   new SearchMethod().search({ search: enteredSearch }).then((response) => {
@@ -48,16 +49,22 @@ const Home: NextPage = () => {
   // }, [enteredSearch]);
 
   return (
-    <Container maxWidth="sm" style={{ marginTop: '16px' }}>
+    <Container maxWidth="sm" style={{ marginTop: "16px" }}>
       <Card sx={{ minWidth: 275 }}>
+        <CardMedia
+          component="img"
+          height="400"
+          image="/img/undraw_Certification_re_ifll.png"
+          alt="img"
+        />
         <form onSubmit={submit}>
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'center',
+              display: "flex",
+              justifyContent: "center",
               p: 1,
               m: 1,
-              bgcolor: 'background.paper',
+              bgcolor: "background.paper",
               borderRadius: 1,
             }}
           >
@@ -68,18 +75,18 @@ const Home: NextPage = () => {
                 label="e-mail"
                 id="fullWidth"
                 value={email}
-                error ={!!emailError}
+                error={!!emailError}
                 helperText={emailError}
               />
             </CardContent>
           </Box>
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'center',
+              display: "flex",
+              justifyContent: "center",
               p: 1,
               m: 1,
-              bgcolor: 'background.paper',
+              bgcolor: "background.paper",
               borderRadius: 1,
             }}
           >
