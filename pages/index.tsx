@@ -96,8 +96,7 @@ const Home: NextPage = () => {
                   variant="body2"
                   color="text.secondary"
                 >
-                  Z racji na ukończenie przez Ciebie naszego planu stażówego,
-                  chcielibyśmy porposić Cie o wypełnienei ankiety na jego temat
+                  W związku z ukończeniem przez Ciebie naszego BootCampa chcielibyśmy zaprosić Cię do wypełnienia krótkiej ankiety  
                   ;)
                 </Typography>
                 <form onSubmit={submit}>
@@ -142,14 +141,43 @@ const Home: NextPage = () => {
                           <CircularProgress size={24} />
                         </>
                       ) : (
-                        "Submit"
+                        <>Wyślij ankietę<span style={{fontSize: "1.4rem",
+                        marginTop: -10}}>📨</span></>
                       )}
                     </Button>
                   </Box>
                 </form>
               </>
             )}
-            {emailSent && <>Poszło</>}
+            {emailSent && <>
+              <CardMedia
+                  component="img"
+                  image="/img/undraw_Letter_re_8m03.png"
+                  alt="img"
+                  sx={{
+                    width: "100%",
+                    maxWidth: 300,
+                    height: "auto",
+                    margin: "auto",
+                  }}
+                />
+                <Typography
+                  align="center"
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                >
+                 Poszło!
+                </Typography>
+                <Typography
+                  align="center"
+                  variant="body2"
+                  color="text.secondary"
+                >
+                  Ankieta przyjdzie na podany adres e-mail ;)
+                </Typography>
+              
+            </>}
           </CardContent>
         </Card>
       </Container>
