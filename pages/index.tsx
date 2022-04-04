@@ -7,12 +7,15 @@ import {
   Container,
   Box,
 } from '@mui/material';
+
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import { ChangeEvent, useState } from 'react';
 import { GetEmailAddress } from '../interfaces/email';
 import styles from '../styles/Home.module.css';
+
+const HTML = ``;
 
 const Home: NextPage = () => {
   const [email, setEmail] = useState<string>('');
@@ -24,7 +27,7 @@ const Home: NextPage = () => {
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    new GetEmailAddress().send({ to: email });
+    new GetEmailAddress().send({ to: email, html: HTML });
 
     setEmail('');
   };
