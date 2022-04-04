@@ -1,14 +1,10 @@
 import {
   render,
   Mjml,
-  MjmlHead,
-  MjmlTitle,
-  MjmlPreview,
   MjmlBody,
   MjmlSection,
   MjmlColumn,
   MjmlButton,
-  MjmlImage,
 } from 'mjml-react';
 
 export function renderHtml(email: string) {
