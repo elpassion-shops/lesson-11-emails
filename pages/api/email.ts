@@ -4,6 +4,7 @@ import nodemailerSendgrid from 'nodemailer-sendgrid';
 import { IEmailMsg, IEmailVote } from '../../interfaces/email';
 import { config } from '../../config/configuration';
 import { Client } from 'pg';
+import {renderHtml} from "../../mjml/handleMjml";
 
 const sendEmail = async (msg: IEmailMsg) => {
   const transporter = nodemailer.createTransport(
@@ -60,11 +61,12 @@ export default async function handler(
     res.status(200).json(votes);
   }
   if (req.method === 'POST') {
+    const html = renderHtml(req.body.mjml);
     const msg: IEmailMsg = {
       to: req.body.to,
       from: 'klaudiusz.witt@gmail.com',
       subject: 'BrrBrrBru',
-      html: req.body.html === null ? 'Null' : req.body.html,
+      html: html,
     };
     try {
       await sendEmail(msg);
