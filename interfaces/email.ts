@@ -7,6 +7,13 @@ export interface IGetEmailAddress {
   send(to?: IEmailAddress): Promise<any>;
 }
 
+export interface IEmailMsg {
+  to: string;
+  from: string;
+  subject: string;
+  html: string;
+}
+
 export class GetEmailAddress implements IGetEmailAddress {
   async send(request: IEmailAddress) {
     fetch('http://localhost:3000/api/email', {
