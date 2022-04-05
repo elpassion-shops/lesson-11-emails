@@ -1,7 +1,7 @@
-import { IResponse } from "../../interface/IResponse";
+import { IResponse } from "../interface/IResponse";
 import { Box, Typography } from "@mui/material";
 
-import { theme } from "../../theme";
+import { theme } from "../theme";
 
 export const SubmitMessage = ({
   responseData,
