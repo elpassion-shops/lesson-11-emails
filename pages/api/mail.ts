@@ -10,8 +10,8 @@ export default async function handler(
   const emailAddress: string = req.body.email;
   try {
     await sendMessageToUser(emailAddress, generateHTML(emailAddress));
-    res.status(202).json({
-      statusCode: 202,
+    res.status(201).json({
+      statusCode: 201,
       msg: `Email sent successfully to ${emailAddress}`,
     });
   } catch (error) {
