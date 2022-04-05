@@ -1,13 +1,15 @@
-import { Button, Input, ThemeProvider, Typography } from "@mui/material";
+import { Input, ThemeProvider, Typography } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
 
+import { Button } from "../components/Button";
+import {Form} from "../components/Form";
 import { IResponse } from "../interface/IResponse";
 import { SendForm } from "../api/sendForm";
 import styles from "../styles/Home.module.css";
-import { Heading } from "./components/Heading";
-import { SubmitMessage } from "./components/SubmitMessage";
+import { Heading } from "../components/Heading";
+import { SubmitMessage } from "../components/SubmitMessage";
 import { theme } from "../theme";
 
 const Home: NextPage = () => {
@@ -66,11 +68,7 @@ const Home: NextPage = () => {
               "Please enter your email in the field below to participate in a short survey:"
             }
           />
-          <form
-            className={styles.form}
-            method="POST"
-            onSubmit={(e) => onSubmit(e)}
-          >
+          <Form onSubmit={(e) => onSubmit(e)}>
             <Input
               sx={{
                 color: theme.palette.secondary.dark,
@@ -91,13 +89,10 @@ const Home: NextPage = () => {
               {emailValid ? "" : "Please enter a correct email"}
             </Typography>
             <Button
-              sx={{ m: 4, py: 1, px: 4 }}
-              size="large"
-              onClick={(e) => onSubmit(e)}
-            >
-              SUBMIT
-            </Button>
-          </form>
+              label={"SUBMIT"}
+              onClick={(e:any) => onSubmit(e)}
+            />
+          </Form>
           <SubmitMessage responseData={responseData} />
         </main>
       </ThemeProvider>
