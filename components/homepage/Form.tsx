@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { useState } from "react";
 import { EmailAnswer } from "../../interfaces/email";
 import { sendEmailAdress } from "../../services/sendEmailAdress";
-import { Answer } from "./Answer";
+import { Answear } from "./Answer";
 
 export function Form() {
   const [response, setResponse] = useState<string>("");
@@ -34,14 +34,14 @@ export function Form() {
   });
 
   return (
-      <form onSubmit={handleSubmit}>
-          <div className={"flex flex-row justify-center mt-10 form"}>
-            <p className="label">wpisz swój adres email:</p>
-            <Input name="email" value={values.email} onChange={handleChange} />
-            <Button />
-          </div>
-          {errors.email ? <div>{errors.email}</div> : null}
-          <Answer text={response} />
-      </form>
+    <form onSubmit={handleSubmit}>
+      <div className={"flex flex-row justify-center mt-10 form"}>
+        <p className="label">wpisz swój adres email:</p>
+        <Input name="email" value={values.email} onChange={handleChange} />
+        <Button />
+      </div>
+      {errors.email ? <div>{errors.email}</div> : null}
+      <Answear text={response} />
+    </form>
   );
 }
