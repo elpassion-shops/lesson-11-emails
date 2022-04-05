@@ -4,8 +4,7 @@ import Head from "next/head";
 import { useState } from "react";
 
 import { IResponse } from "../interface/IResponse";
-// import { SendForm } from "../api/sendForm";
-import { MockForm } from "../test/mockSendForm";
+import { SendForm } from "../api/sendForm";
 import styles from "../styles/Home.module.css";
 import { Heading } from "./components/Heading";
 import { SubmitMessage } from "./components/SubmitMessage";
@@ -17,7 +16,7 @@ const Home: NextPage = () => {
   const [emailValid, setEmailValid] = useState<boolean>(true);
 
   const sendForm = async () => {
-    const res = await new MockForm(email).send({ body: { email: email } });
+    const res = await new SendForm(email).send({ body: { email: email } });
     setResponseData(res);
   };
 
