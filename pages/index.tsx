@@ -23,7 +23,8 @@ import styles from "../styles/Home.module.css";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#00ffa3"}
+      main: "#00ffa3",
+    },
   },
 });
 
@@ -59,12 +60,6 @@ const Home: NextPage = () => {
     return emailRegex.test(email) ? null : "Please provide valid email";
   }, [email]);
 
-  // useEffect(() => {
-  //   new SearchMethod().search({ search: enteredSearch }).then((response) => {
-  //     console.log('response', response);
-  //   });
-  // }, [enteredSearch]);
-
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="sm" style={{ marginTop: "16px" }}>
@@ -96,8 +91,8 @@ const Home: NextPage = () => {
                   variant="body2"
                   color="text.secondary"
                 >
-                  W związku z ukończeniem przez Ciebie naszego BootCampa chcielibyśmy zaprosić Cię do wypełnienia krótkiej ankiety  
-                  ;)
+                  W związku z ukończeniem przez Ciebie naszego BootCampa
+                  chcielibyśmy zaprosić Cię do wypełnienia krótkiej ankiety ;)
                 </Typography>
                 <form onSubmit={submit}>
                   <Box
@@ -141,16 +136,21 @@ const Home: NextPage = () => {
                           <CircularProgress size={24} />
                         </>
                       ) : (
-                        <>Wyślij ankietę<span style={{fontSize: "1.4rem",
-                        marginTop: -10}}>📨</span></>
+                        <>
+                          Wyślij ankietę
+                          <span style={{ fontSize: "1.4rem", marginTop: -10 }}>
+                            📨
+                          </span>
+                        </>
                       )}
                     </Button>
                   </Box>
                 </form>
               </>
             )}
-            {emailSent && <>
-              <CardMedia
+            {emailSent && (
+              <>
+                <CardMedia
                   component="img"
                   image="/img/undraw_Letter_re_8m03.png"
                   alt="img"
@@ -167,7 +167,7 @@ const Home: NextPage = () => {
                   variant="h5"
                   component="div"
                 >
-                 Poszło!
+                  Poszło!
                 </Typography>
                 <Typography
                   align="center"
@@ -176,8 +176,8 @@ const Home: NextPage = () => {
                 >
                   Ankieta przyjdzie na podany adres e-mail ;)
                 </Typography>
-              
-            </>}
+              </>
+            )}
           </CardContent>
         </Card>
       </Container>
