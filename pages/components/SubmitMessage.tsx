@@ -10,12 +10,12 @@ export const SubmitMessage = ({
 }) => {
   return (
     <Box sx={{ textAlign: "center" }}>
-      {responseData?.statusCode === 200 && (
+      {responseData?.statusCode === 202 && (
         <Typography variant="h5" sx={{ color: theme.palette.success.dark }}>
           {responseData?.msg || ""}
         </Typography>
       )}
-      {responseData?.statusCode === 500 && (
+      {responseData?.statusCode && Number(responseData?.statusCode) > 299 && (
         <Typography variant="h6" sx={{ color: theme.palette.secondary.dark }}>
           {responseData?.msg || ""}
         </Typography>
