@@ -1,5 +1,10 @@
-import fs from 'fs';
+import {validate} from "class-validator";
 
-test('works', ()=>{
-  expect(true).toEqual(true)
+class Request {
+
+}
+
+test('passes with correct request', async ()=>{
+  const request = new Request();
+  expect(await validate(request)).toEqual([])
 })
