@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { IEmailVote } from "../../interfaces/email";
-import { renderHtml } from "../../mjml/handleMjml";
+import { renderHtml } from "../../helpers/renderHtml";
 import { createVoteClient } from "../../utils/databaseUtils";
 import {
   createEmailMsg,
