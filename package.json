@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "generate": "mjml -r emails/index.mjml -o emails/index.html --config.minify"
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
