@@ -36,7 +36,5 @@ export function generateHTML(mail: string) {
   </mj-body>
 </mjml>
 `);
-  const mjml = template(mail);
-  const html = mjml2html(mjml);
-  return html.html;
+  return mjml2html(template(mail)).html;
 }
