@@ -1,158 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tests for AnswerClose tests for AnswerClose. should fails with empty isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": null,
-      "value": 5,
-    },
-    "value": null,
-  },
-]
-`;
-
-exports[`tests for AnswerClose tests for AnswerClose. should fails with number in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": 9,
-      "value": 5,
-    },
-    "value": 9,
-  },
-]
-`;
-
-exports[`tests for AnswerClose tests for AnswerClose. should fails with string in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": "abc",
-      "value": 5,
-    },
-    "value": "abc",
-  },
-]
-`;
-
-exports[`tests for AnswerClose tests for AnswerClose.is should fails with empty isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": null,
-      "value": 5,
-    },
-    "value": null,
-  },
-]
-`;
-
-exports[`tests for AnswerClose tests for AnswerClose.is should fails with number in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": 9,
-      "value": 5,
-    },
-    "value": 9,
-  },
-]
-`;
-
-exports[`tests for AnswerClose tests for AnswerClose.is should fails with string in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": "abc",
-      "value": 5,
-    },
-    "value": "abc",
-  },
-]
-`;
-
-exports[`tests for AnswerClose tests for AnswerClose.isO should fails with empty isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": null,
-      "value": 5,
-    },
-    "value": null,
-  },
-]
-`;
-
-exports[`tests for AnswerClose tests for AnswerClose.isO should fails with number in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": 9,
-      "value": 5,
-    },
-    "value": 9,
-  },
-]
-`;
-
-exports[`tests for AnswerClose tests for AnswerClose.isO should fails with string in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": "abc",
-      "value": 5,
-    },
-    "value": "abc",
-  },
-]
-`;
-
 exports[`tests for AnswerClose tests for AnswerClose.isOpen should fails with empty isOpen 1`] = `
 Array [
   ValidationError {
@@ -204,57 +51,6 @@ Array [
 ]
 `;
 
-exports[`tests for AnswerClose tests for AnswerClose.v should fails with empty isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": null,
-      "value": 5,
-    },
-    "value": null,
-  },
-]
-`;
-
-exports[`tests for AnswerClose tests for AnswerClose.v should fails with number in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": 9,
-      "value": 5,
-    },
-    "value": 9,
-  },
-]
-`;
-
-exports[`tests for AnswerClose tests for AnswerClose.v should fails with string in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": "abc",
-      "value": 5,
-    },
-    "value": "abc",
-  },
-]
-`;
-
 exports[`tests for AnswerClose tests for AnswerClose.value should fails with boolean in value 1`] = `
 Array [
   ValidationError {
@@ -270,23 +66,6 @@ Array [
       "value": true,
     },
     "value": true,
-  },
-]
-`;
-
-exports[`tests for AnswerClose tests for AnswerClose.value should fails with empty isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": null,
-      "value": 5,
-    },
-    "value": null,
   },
 ]
 `;
@@ -310,23 +89,6 @@ Array [
 ]
 `;
 
-exports[`tests for AnswerClose tests for AnswerClose.value should fails with number in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": 9,
-      "value": 5,
-    },
-    "value": 9,
-  },
-]
-`;
-
 exports[`tests for AnswerClose tests for AnswerClose.value should fails with number in value 1`] = `
 Array [
   ValidationError {
@@ -340,23 +102,6 @@ Array [
       "value": 9,
     },
     "value": 9,
-  },
-]
-`;
-
-exports[`tests for AnswerClose tests for AnswerClose.value should fails with string in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerClose {
-      "isOpen": "abc",
-      "value": 5,
-    },
-    "value": "abc",
   },
 ]
 `;
@@ -391,108 +136,6 @@ Array [
       "value": 0,
     },
     "value": 0,
-  },
-]
-`;
-
-exports[`tests for AnswerOpen tests for AnswerOpen.is should fails with empty isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerOpen {
-      "isOpen": null,
-      "value": "very good",
-    },
-    "value": null,
-  },
-]
-`;
-
-exports[`tests for AnswerOpen tests for AnswerOpen.is should fails with number in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerOpen {
-      "isOpen": 9,
-      "value": "very good",
-    },
-    "value": 9,
-  },
-]
-`;
-
-exports[`tests for AnswerOpen tests for AnswerOpen.is should fails with string in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerOpen {
-      "isOpen": "abc",
-      "value": "very good",
-    },
-    "value": "abc",
-  },
-]
-`;
-
-exports[`tests for AnswerOpen tests for AnswerOpen.isOp should fails with empty isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerOpen {
-      "isOpen": null,
-      "value": "very good",
-    },
-    "value": null,
-  },
-]
-`;
-
-exports[`tests for AnswerOpen tests for AnswerOpen.isOp should fails with number in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerOpen {
-      "isOpen": 9,
-      "value": "very good",
-    },
-    "value": 9,
-  },
-]
-`;
-
-exports[`tests for AnswerOpen tests for AnswerOpen.isOp should fails with string in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerOpen {
-      "isOpen": "abc",
-      "value": "very good",
-    },
-    "value": "abc",
   },
 ]
 `;
@@ -582,40 +225,6 @@ Array [
 ]
 `;
 
-exports[`tests for AnswerOpen tests for AnswerOpen.value should fails with empty isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerOpen {
-      "isOpen": null,
-      "value": "very good",
-    },
-    "value": null,
-  },
-]
-`;
-
-exports[`tests for AnswerOpen tests for AnswerOpen.value should fails with empty isOpen 2`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerOpen {
-      "isOpen": null,
-      "value": "very good",
-    },
-    "value": null,
-  },
-]
-`;
-
 exports[`tests for AnswerOpen tests for AnswerOpen.value should fails with empty value 1`] = `
 Array [
   ValidationError {
@@ -646,40 +255,6 @@ Array [
       "value": null,
     },
     "value": null,
-  },
-]
-`;
-
-exports[`tests for AnswerOpen tests for AnswerOpen.value should fails with number in isOpen 1`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerOpen {
-      "isOpen": 9,
-      "value": "very good",
-    },
-    "value": 9,
-  },
-]
-`;
-
-exports[`tests for AnswerOpen tests for AnswerOpen.value should fails with number in isOpen 2`] = `
-Array [
-  ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
-    },
-    "property": "isOpen",
-    "target": AnswerOpen {
-      "isOpen": 9,
-      "value": "very good",
-    },
-    "value": 9,
   },
 ]
 `;
@@ -718,36 +293,272 @@ Array [
 ]
 `;
 
-exports[`tests for AnswerOpen tests for AnswerOpen.value should fails with string in isOpen 1`] = `
+exports[`tests for Question tests for Question.answer should fails with boolean in answer 1`] = `
 Array [
   ValidationError {
-    "children": Array [],
-    "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
+    "children": Array [
+      ValidationError {
+        "constraints": Object {
+          "nestedValidation": "nested property answer must be either object or array",
+        },
+        "property": "answer",
+        "target": [Function],
+        "value": true,
+      },
+    ],
+    "property": "answer",
+    "target": Question {
+      "answer": true,
+      "id": 1,
+      "question": "How about ?",
     },
-    "property": "isOpen",
-    "target": AnswerOpen {
-      "isOpen": "abc",
-      "value": "very good",
-    },
-    "value": "abc",
+    "value": true,
   },
 ]
 `;
 
-exports[`tests for AnswerOpen tests for AnswerOpen.value should fails with string in isOpen 2`] = `
+exports[`tests for Question tests for Question.answer should fails with boolean in answer 2`] = `Array []`;
+
+exports[`tests for Question tests for Question.answer should fails with empty answer 1`] = `
+Array [
+  ValidationError {
+    "children": Array [
+      ValidationError {
+        "constraints": Object {
+          "nestedValidation": "nested property answer must be either object or array",
+        },
+        "property": "answer",
+        "target": [Function],
+        "value": null,
+      },
+    ],
+    "property": "answer",
+    "target": Question {
+      "answer": null,
+      "id": 1,
+      "question": "How about ?",
+    },
+    "value": null,
+  },
+]
+`;
+
+exports[`tests for Question tests for Question.answer should fails with number in answer 1`] = `
+Array [
+  ValidationError {
+    "children": Array [
+      ValidationError {
+        "constraints": Object {
+          "nestedValidation": "nested property answer must be either object or array",
+        },
+        "property": "answer",
+        "target": [Function],
+        "value": 9,
+      },
+    ],
+    "property": "answer",
+    "target": Question {
+      "answer": 9,
+      "id": 1,
+      "question": "How about ?",
+    },
+    "value": 9,
+  },
+]
+`;
+
+exports[`tests for Question tests for Question.answer should fails with string in answer 1`] = `
+Array [
+  ValidationError {
+    "children": Array [
+      ValidationError {
+        "constraints": Object {
+          "nestedValidation": "nested property answer must be either object or array",
+        },
+        "property": "answer",
+        "target": [Function],
+        "value": "uno duo quarto",
+      },
+    ],
+    "property": "answer",
+    "target": Question {
+      "answer": "uno duo quarto",
+      "id": 1,
+      "question": "How about ?",
+    },
+    "value": "uno duo quarto",
+  },
+]
+`;
+
+exports[`tests for Question tests for Question.id should fails with boolean in id 1`] = `
 Array [
   ValidationError {
     "children": Array [],
     "constraints": Object {
-      "isBoolean": "isOpen must be a boolean value",
+      "isInt": "id must be an integer number",
+      "min": "id must not be less than 1",
     },
-    "property": "isOpen",
-    "target": AnswerOpen {
-      "isOpen": "abc",
-      "value": "very good",
+    "property": "id",
+    "target": Question {
+      "answer": AnswerOpen {
+        "isOpen": true,
+        "value": "very good",
+      },
+      "id": true,
+      "question": "How about ?",
     },
-    "value": "abc",
+    "value": true,
+  },
+]
+`;
+
+exports[`tests for Question tests for Question.id should fails with boolean in id 2`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isInt": "id must be an integer number",
+      "min": "id must not be less than 1",
+    },
+    "property": "id",
+    "target": Question {
+      "answer": AnswerOpen {
+        "isOpen": true,
+        "value": "very good",
+      },
+      "id": "text w id",
+      "question": "How about ?",
+    },
+    "value": "text w id",
+  },
+]
+`;
+
+exports[`tests for Question tests for Question.id should fails with empty value 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isInt": "id must be an integer number",
+      "min": "id must not be less than 1",
+    },
+    "property": "id",
+    "target": Question {
+      "answer": AnswerOpen {
+        "isOpen": true,
+        "value": "very good",
+      },
+      "id": null,
+      "question": "How about ?",
+    },
+    "value": null,
+  },
+]
+`;
+
+exports[`tests for Question tests for Question.id should fails with text in id 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isInt": "id must be an integer number",
+      "min": "id must not be less than 1",
+    },
+    "property": "id",
+    "target": Question {
+      "answer": AnswerOpen {
+        "isOpen": true,
+        "value": "very good",
+      },
+      "id": "text w id",
+      "question": "How about ?",
+    },
+    "value": "text w id",
+  },
+]
+`;
+
+exports[`tests for Question tests for Question.id should fails with to low value 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "min": "id must not be less than 1",
+    },
+    "property": "id",
+    "target": Question {
+      "answer": AnswerOpen {
+        "isOpen": true,
+        "value": "very good",
+      },
+      "id": 0,
+      "question": "How about ?",
+    },
+    "value": 0,
+  },
+]
+`;
+
+exports[`tests for Question tests for Question.question should fails with boolean in question 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isString": "question must be a string",
+    },
+    "property": "question",
+    "target": Question {
+      "answer": AnswerOpen {
+        "isOpen": true,
+        "value": "very good",
+      },
+      "id": 1,
+      "question": true,
+    },
+    "value": true,
+  },
+]
+`;
+
+exports[`tests for Question tests for Question.question should fails with empty question 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isString": "question must be a string",
+    },
+    "property": "question",
+    "target": Question {
+      "answer": AnswerOpen {
+        "isOpen": true,
+        "value": "very good",
+      },
+      "id": 1,
+      "question": null,
+    },
+    "value": null,
+  },
+]
+`;
+
+exports[`tests for Question tests for Question.question should fails with number in question 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isString": "question must be a string",
+    },
+    "property": "question",
+    "target": Question {
+      "answer": AnswerOpen {
+        "isOpen": true,
+        "value": "very good",
+      },
+      "id": 1,
+      "question": 9,
+    },
+    "value": 9,
   },
 ]
 `;
