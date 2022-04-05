@@ -2,17 +2,18 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { IEmailVote } from "../../interfaces/email";
 import { renderHtml } from "../../mjml/handleMjml";
 import { createVoteClient } from "../../utils/databaseUtils";
-import { createEmailMsg, sendEmail } from "../../utils/emailUtils";
+import {
+  createEmailMsg,
+  createVoteData,
+  sendEmail,
+} from "../../utils/emailUtils";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    const voteData: IEmailVote = {
-      email: req.query.email as string,
-      vote: Number(req.query.vote),
-    };
+    const voteData = await createVoteData(req.query.email, req.query.vote);
     const voteClient = await createVoteClient(voteData);
     const vote = await voteClient.getVote(voteData.email);
     await voteClient.end();

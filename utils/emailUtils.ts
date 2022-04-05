@@ -1,4 +1,4 @@
-import { IEmailMsg } from "../interfaces/email";
+import { IEmailMsg, IEmailVote } from "../interfaces/email";
 import { config } from "../config/configuration";
 import nodemailer from "nodemailer";
 import nodemailerSendgrid from "nodemailer-sendgrid";
@@ -18,4 +18,14 @@ export async function sendEmail(msg: IEmailMsg) {
     })
   );
   return await transporter.sendMail(msg);
+}
+
+export async function createVoteData(
+  email: string | string[],
+  vote: string | string[]
+): Promise<IEmailVote> {
+  return {
+    email: email.toString(),
+    vote: Number(vote),
+  };
 }
