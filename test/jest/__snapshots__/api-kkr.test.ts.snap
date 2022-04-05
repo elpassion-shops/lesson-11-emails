@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for AnswerOpen tests for AnswerOpen.value should fails with boolean in value 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isString": "value must be a string",
+    },
+    "property": "value",
+    "target": AnswerOpen {
+      "isOpen": true,
+      "value": true,
+    },
+    "value": true,
+  },
+]
+`;
+
+exports[`tests for AnswerOpen tests for AnswerOpen.value should fails with empty isOpen 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isBoolean": "isOpen must be a boolean value",
+    },
+    "property": "isOpen",
+    "target": AnswerOpen {
+      "isOpen": null,
+      "value": "very good",
+    },
+    "value": null,
+  },
+]
+`;
+
+exports[`tests for AnswerOpen tests for AnswerOpen.value should fails with empty value 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isString": "value must be a string",
+    },
+    "property": "value",
+    "target": AnswerOpen {
+      "isOpen": true,
+      "value": null,
+    },
+    "value": null,
+  },
+]
+`;
+
+exports[`tests for AnswerOpen tests for AnswerOpen.value should fails with number in isOpen 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isBoolean": "isOpen must be a boolean value",
+    },
+    "property": "isOpen",
+    "target": AnswerOpen {
+      "isOpen": 9,
+      "value": "very good",
+    },
+    "value": 9,
+  },
+]
+`;
+
+exports[`tests for AnswerOpen tests for AnswerOpen.value should fails with number in value 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isString": "value must be a string",
+    },
+    "property": "value",
+    "target": AnswerOpen {
+      "isOpen": true,
+      "value": 9,
+    },
+    "value": 9,
+  },
+]
+`;
+
+exports[`tests for AnswerOpen tests for AnswerOpen.value should fails with string in isOpen 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isBoolean": "isOpen must be a boolean value",
+    },
+    "property": "isOpen",
+    "target": AnswerOpen {
+      "isOpen": "abc",
+      "value": "very good",
+    },
+    "value": "abc",
+  },
+]
+`;
