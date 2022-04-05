@@ -2,7 +2,6 @@ import {
   Card,
   CardContent,
   TextField,
-  CardActions,
   Button,
   Container,
   Box,
@@ -11,19 +10,16 @@ import {
   CircularProgress,
   ThemeProvider,
   createTheme,
-} from "@mui/material";
+} from '@mui/material';
 
-import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import { ChangeEvent, useMemo, useState } from "react";
-import { GetEmailAddress } from "../interfaces/email";
-import styles from "../styles/Home.module.css";
+import type { NextPage } from 'next';
+import { ChangeEvent, useMemo, useState } from 'react';
+import { GetEmailAddress } from '../interfaces/email';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#00ffa3",
+      main: '#00ffa3',
     },
   },
 });
@@ -55,14 +51,14 @@ const Home: NextPage = () => {
     const emailRegex =
       /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])$/;
     if (!email?.trim()) {
-      return "Email is required";
+      return 'Email is required';
     }
-    return emailRegex.test(email) ? null : "Please provide valid email";
+    return emailRegex.test(email) ? null : 'Please provide valid email';
   }, [email]);
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="sm" style={{ marginTop: "16px" }}>
+      <Container maxWidth="sm" style={{ marginTop: '16px' }}>
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
             {!emailSent && (
@@ -72,10 +68,10 @@ const Home: NextPage = () => {
                   image="/img/undraw_Certification_re_ifll.png"
                   alt="img"
                   sx={{
-                    width: "100%",
+                    width: '100%',
                     maxWidth: 300,
-                    height: "auto",
-                    margin: "auto",
+                    height: 'auto',
+                    margin: 'auto',
                   }}
                 />
                 <Typography
@@ -97,11 +93,11 @@ const Home: NextPage = () => {
                 <form onSubmit={submit}>
                   <Box
                     sx={{
-                      display: "flex",
-                      justifyContent: "center",
+                      display: 'flex',
+                      justifyContent: 'center',
                       p: 1,
                       m: 1,
-                      bgcolor: "background.paper",
+                      bgcolor: 'background.paper',
                       borderRadius: 1,
                     }}
                   >
@@ -117,11 +113,11 @@ const Home: NextPage = () => {
                   </Box>
                   <Box
                     sx={{
-                      display: "flex",
-                      justifyContent: "center",
+                      display: 'flex',
+                      justifyContent: 'center',
                       p: 1,
                       m: 1,
-                      bgcolor: "background.paper",
+                      bgcolor: 'background.paper',
                       borderRadius: 1,
                     }}
                   >
@@ -138,7 +134,7 @@ const Home: NextPage = () => {
                       ) : (
                         <>
                           Wyślij ankietę
-                          <span style={{ fontSize: "1.4rem", marginTop: -10 }}>
+                          <span style={{ fontSize: '1.4rem', marginTop: -10 }}>
                             📨
                           </span>
                         </>
@@ -155,10 +151,10 @@ const Home: NextPage = () => {
                   image="/img/undraw_Letter_re_8m03.png"
                   alt="img"
                   sx={{
-                    width: "100%",
+                    width: '100%',
                     maxWidth: 300,
-                    height: "auto",
-                    margin: "auto",
+                    height: 'auto',
+                    margin: 'auto',
                   }}
                 />
                 <Typography
