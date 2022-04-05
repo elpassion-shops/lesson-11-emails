@@ -17,8 +17,9 @@ class DatabaseService {
       database,
     });
   }
-  public async connect(): Promise<void> {
+  public async connect(): Promise<this> {
     await this.client.connect();
+    return this;
   }
   public async query(
     query: string,
@@ -31,23 +32,15 @@ class DatabaseService {
   }
 }
 
-export class VoteDbClient {
-  private client: DatabaseService;
+export class VoteDbClient extends DatabaseService {
   constructor(client: Client) {
-    this.client = new DatabaseService(
+    super(
       client.user,
       client.password,
       client.host,
       client.port,
       client.database
     );
-  }
-  public async connect(): Promise<this> {
-    await this.client.connect();
-    return this;
-  }
-  public async end(): Promise<void> {
-    await this.client.end();
   }
   public async createTable(): Promise<this> {
     await this.client.query(`CREATE TABLE IF NOT EXISTS votes (

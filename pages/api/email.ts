@@ -9,12 +9,12 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    const data: IEmailVote = {
+    const voteData: IEmailVote = {
       email: req.query.email as string,
       vote: Number(req.query.vote),
     };
-    const voteClient = await createVoteClient(data);
-    const vote = await voteClient.getVote(data.email);
+    const voteClient = await createVoteClient(voteData);
+    const vote = await voteClient.getVote(voteData.email);
     await voteClient.end();
     res.status(200).json({
       message: "Vote saved",
