@@ -1,9 +1,6 @@
 import {
   render,
   Mjml,
-  MjmlHead,
-  MjmlTitle,
-  MjmlPreview,
   MjmlBody,
   MjmlSection,
   MjmlColumn,
@@ -12,7 +9,7 @@ import {
   MjmlText,
   MjmlWrapper,
 } from 'mjml-react';
-import { image } from './images';
+import { image } from '../public/img/images';
 
 export function renderHtml(email: string) {
   const { html } = render(
