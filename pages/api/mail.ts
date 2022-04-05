@@ -7,12 +7,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<IResponse>
 ) {
-  const emailAdress: string = req.body.email;
+  const emailAddress: string = req.body.email;
   try {
-    await sendMessageToUser(emailAdress, generateHTML(emailAdress));
+    await sendMessageToUser(emailAddress, generateHTML(emailAddress));
     res.status(202).json({
       statusCode: 202,
-      msg: `Email sent successfully to ${emailAdress}`,
+      msg: `Email sent successfully to ${emailAddress}`,
     });
   } catch (error) {
     res.status(500).json({
