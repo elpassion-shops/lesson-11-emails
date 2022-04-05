@@ -1,6 +1,6 @@
 import { compile } from "handlebars";
 import mjml2html from "mjml";
-export function generateHTML(mail: string) {
+export function generateHTML(mail: string): string {
   const template = compile(`
 <mjml>
   <mj-head>
