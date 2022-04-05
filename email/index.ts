@@ -1,7 +1,4 @@
 import mjml2html from "mjml";
-/*
-  Compile an mjml string
-*/
 const options = {};
 
 const email = `
@@ -47,9 +44,3 @@ const email = `
 `;
 
 export const htmlOutput = mjml2html(email, options);
-
-/*
-  Print the responsive HTML generated and MJML errors if any
-*/
-console.log(htmlOutput.html);
-console.error(htmlOutput.errors);
