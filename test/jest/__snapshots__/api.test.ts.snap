@@ -9,7 +9,7 @@ Array [
           ValidationError {
             "children": Array [],
             "constraints": Object {
-              "isNotIn": "value should not be one of the following values: 0, , , ",
+              "isNotIn": "value should not be one of the following values: 0, 0, , , ",
             },
             "property": "value",
             "target": Answer {},
@@ -37,6 +37,23 @@ Array [
 ]
 `;
 
+exports[`fails with incorrect email 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isEmail": "email must be an email",
+    },
+    "property": "email",
+    "target": AnswerRequest {
+      "answers": Array [],
+      "email": "bugajewskam.com",
+    },
+    "value": "bugajewskam.com",
+  },
+]
+`;
+
 exports[`passes with correct answers 1`] = `Array []`;
 
 exports[`passes with incorrect answer value 1`] = `
@@ -48,7 +65,7 @@ Array [
           ValidationError {
             "children": Array [],
             "constraints": Object {
-              "isNotIn": "value should not be one of the following values: 0, , , ",
+              "isNotIn": "value should not be one of the following values: 0, 0, , , ",
             },
             "property": "value",
             "target": Answer {

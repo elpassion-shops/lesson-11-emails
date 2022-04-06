@@ -55,6 +55,7 @@ export class AnswerRequest {
   @ValidateNested({each: true})
   answers: Answer[];
 
+  @IsString()
   @IsEmail()
   email: string;
 }

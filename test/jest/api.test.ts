@@ -35,6 +35,7 @@ test("fails without email", async () => {
     expect.objectContaining({
       constraints: {
         isEmail: "email must be an email",
+        isString: "email must be a string",
       },
       property: "email",
     }),
