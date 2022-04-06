@@ -74,3 +74,30 @@ class Question implements IQuestion {
     this.answer = answer;
   }
 }
+
+export class Questionnaire implements IQuestionnaire {
+  @IsInt()
+  @Min(1)
+  id;
+
+  @IsString()
+  title;
+
+  @ValidateNested({ each: true })
+  questions;
+
+  @IsEmail()
+  email?;
+
+  constructor(
+    id: number,
+    title: string,
+    questions: IQuestion[],
+    email?: string | null
+  ) {
+    this.id = id;
+    this.title = title;
+    this.questions = questions;
+    this.email = email;
+  }
+}
