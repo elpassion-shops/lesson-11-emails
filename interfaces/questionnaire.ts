@@ -24,6 +24,7 @@ export interface IQuestionnaire {
   title: string;
   questions: IQuestion[];
   email?: string | null;
+  isOpen?: boolean | null;
 }
 
 export interface IQuestionnaireResponse {
@@ -32,6 +33,19 @@ export interface IQuestionnaireResponse {
 
 export interface IQuestionnaireRequest {
   id: number;
+}
+
+export interface IAnswersRequest {
+  answers: IAnswer[];
+  email: string;
+}
+
+export class AnswerRequest {
+  @ValidateNested({ each: true })
+  answers: IAnswer[];
+
+  @IsEmail()
+  email: string;
 }
 
 export class AnswerClose implements IAnswer {
