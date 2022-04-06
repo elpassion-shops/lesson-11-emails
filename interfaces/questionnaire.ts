@@ -1,3 +1,4 @@
+import { Type } from "class-transformer";
 import {
   IsEmail,
   IsInt,
@@ -8,6 +9,7 @@ import {
   Min,
   ValidateNested,
 } from "class-validator";
+import "reflect-metadata";
 
 export interface IAnswer {
   isOpen: boolean;
@@ -52,8 +54,9 @@ export class Answer implements IAnswer{
 }
 
 export class AnswerRequest {
-  @ValidateNested({each: true})
-  answers: Answer[];
+  @ValidateNested({ each: true })
+  @Type(() => Answer)
+  answers!: Answer[];
 
   @IsString()
   @IsEmail()
