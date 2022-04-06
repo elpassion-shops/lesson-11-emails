@@ -33,7 +33,7 @@ export interface IQuestionnaireRequest {
   id: number;
 }
 
-class AnswerClose implements IAnswer {
+export class AnswerClose implements IAnswer {
   isOpen = false;
 
   @IsInt()
@@ -46,7 +46,7 @@ class AnswerClose implements IAnswer {
   }
 }
 
-class AnswerOpen implements IAnswer {
+export class AnswerOpen implements IAnswer {
   isOpen = true;
 
   @IsString()
@@ -57,7 +57,7 @@ class AnswerOpen implements IAnswer {
   }
 }
 
-class Question implements IQuestion {
+export class Question implements IQuestion {
   @IsInt()
   @Min(1)
   id: number;
