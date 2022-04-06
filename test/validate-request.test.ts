@@ -1,14 +1,17 @@
-import { IsEmail, IsString, validate } from "class-validator";
+import { IsEmail, IsString, validate, ValidateNested } from "class-validator";
 
-class Answer {}
+class Answer {
+  @IsString()
+  id!: string;
+}
 
 class Request {
   @IsString()
   @IsEmail()
   email!: string;
 
-  @IsString({ each: true })
-  answers!: string[];
+  @ValidateNested({ each: true })
+  answers!: Answer[];
 }
 
 function generateRequest(overrides: { email?: any; answers?: any }) {
@@ -54,10 +57,20 @@ test("fails with empty answers", async () => {
   const request = generateRequest({ answers: null });
   expect(await validate(request)).toEqual([
     expect.objectContaining({
-      constraints: {
-        isString: "each value in answers must be a string",
-      },
-      property: "answers",
+      children: [
+        expect.objectContaining({
+          constraints: {
+            nestedValidation:
+              "each value in nested property answers must be either object or array",
+          },
+          property: "answers",
+        }),
+      ],
     }),
   ]);
+});
+
+test("fails with answer without id", async () => {
+  const request = generateRequest({ answers: [new Answer()] });
+  expect(await validate(request)).toMatchSnapshot();
 });

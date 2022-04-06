@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fails with answer without id 1`] = `
+Array [
+  ValidationError {
+    "children": Array [
+      ValidationError {
+        "children": Array [
+          ValidationError {
+            "children": Array [],
+            "constraints": Object {
+              "isString": "id must be a string",
+            },
+            "property": "id",
+            "target": Answer {},
+            "value": undefined,
+          },
+        ],
+        "property": "0",
+        "target": Array [
+          Answer {},
+        ],
+        "value": Answer {},
+      },
+    ],
+    "property": "answers",
+    "target": Request {
+      "answers": Array [
+        Answer {},
+      ],
+      "email": "mihau@gmail.com",
+    },
+    "value": Array [
+      Answer {},
+    ],
+  },
+]
+`;
