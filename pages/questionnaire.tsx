@@ -189,7 +189,8 @@ const Home: NextPage = () => {
           )}
           {sent && (
             <Grid item>
-              <Typography align="center" variant="h5">
+              <img src="/img/undraw_Celebrating_rtuv.png" style={{maxHeight: 300, margin: 'auto', display: "block"}}/>
+              <Typography align="center" variant="h5" sx={{marginBottom: 3}}>
                 Dziękujemy za udzielone odpowiedzi!
               </Typography>
             </Grid>

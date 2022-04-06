@@ -10,20 +10,12 @@ import {
   CircularProgress,
   ThemeProvider,
   createTheme,
-} from '@mui/material';
+} from "@mui/material";
 
-import type { NextPage } from 'next';
-import { ChangeEvent, useMemo, useState } from 'react';
-import { GetEmailAddress } from '../interfaces/email';
+import type { NextPage } from "next";
+import { ChangeEvent, useMemo, useState } from "react";
+import { GetEmailAddress } from "../interfaces/email";
 import { useRouter } from "next/router";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#00ffa3',
-    },
-  },
-});
 
 const Home: NextPage = () => {
   const [email, setEmail] = useState<string | null>(null);
@@ -52,133 +44,123 @@ const Home: NextPage = () => {
     const emailRegex =
       /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])$/;
     if (!email?.trim()) {
-      return 'Email is required';
+      return "Email is required";
     }
-    return emailRegex.test(email) ? null : 'Please provide valid email';
+    return emailRegex.test(email) ? null : "Please provide valid email";
   }, [email]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container maxWidth="sm" style={{ marginTop: '16px' }}>
-        <Card sx={{ minWidth: 275 }}>
-          <CardContent>
-            {!emailSent && (
-              <>
-                <CardMedia
-                  component="img"
-                  image="/img/undraw_Certification_re_ifll.png"
-                  alt="img"
+    <Container maxWidth="sm" style={{ marginTop: "16px" }}>
+      <Card sx={{ minWidth: 275 }}>
+        <CardContent>
+          {!emailSent && (
+            <>
+              <CardMedia
+                component="img"
+                image="/img/undraw_Certification_re_ifll.png"
+                alt="img"
+                sx={{
+                  width: "100%",
+                  maxWidth: 300,
+                  height: "auto",
+                  margin: "auto",
+                }}
+              />
+              <Typography
+                align="center"
+                gutterBottom
+                variant="h5"
+                component="div"
+              >
+                Witaj!
+              </Typography>
+              <Typography align="center" variant="body2" color="text.secondary">
+                W związku z ukończeniem przez Ciebie naszego BootCampa
+                chcielibyśmy zaprosić Cię do wypełnienia krótkiej ankiety ;)
+              </Typography>
+              <form onSubmit={submit}>
+                <Box
                   sx={{
-                    width: '100%',
-                    maxWidth: 300,
-                    height: 'auto',
-                    margin: 'auto',
+                    display: "flex",
+                    justifyContent: "center",
+                    p: 1,
+                    m: 1,
+                    bgcolor: "background.paper",
+                    borderRadius: 1,
                   }}
-                />
-                <Typography
-                  align="center"
-                  gutterBottom
-                  variant="h5"
-                  component="div"
                 >
-                  Witaj!
-                </Typography>
-                <Typography
-                  align="center"
-                  variant="body2"
-                  color="text.secondary"
-                >
-                  W związku z ukończeniem przez Ciebie naszego BootCampa
-                  chcielibyśmy zaprosić Cię do wypełnienia krótkiej ankiety ;)
-                </Typography>
-                <form onSubmit={submit}>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      p: 1,
-                      m: 1,
-                      bgcolor: 'background.paper',
-                      borderRadius: 1,
-                    }}
-                  >
-                    <TextField
-                      onChange={emailAddressChangeHandler}
-                      fullWidth
-                      label="e-mail"
-                      id="fullWidth"
-                      value={email}
-                      error={!!emailError}
-                      helperText={emailError}
-                    />
-                  </Box>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      p: 1,
-                      m: 1,
-                      bgcolor: 'background.paper',
-                      borderRadius: 1,
-                    }}
-                  >
-                    <Button
-                      fullWidth
-                      variant="contained"
-                      type="submit"
-                      disabled={!!emailError || isLoading}
-                    >
-                      {isLoading ? (
-                        <>
-                          <CircularProgress size={24} />
-                        </>
-                      ) : (
-                        <>
-                          Wyślij ankietę
-                          <span style={{ fontSize: '1.4rem', marginTop: -10 }}>
-                            📨
-                          </span>
-                        </>
-                      )}
-                    </Button>
-                  </Box>
-                </form>
-              </>
-            )}
-            {emailSent && (
-              <>
-                <CardMedia
-                  component="img"
-                  image="/img/undraw_Letter_re_8m03.png"
-                  alt="img"
+                  <TextField
+                    onChange={emailAddressChangeHandler}
+                    fullWidth
+                    label="e-mail"
+                    id="fullWidth"
+                    value={email}
+                    error={!!emailError}
+                    helperText={emailError}
+                  />
+                </Box>
+                <Box
                   sx={{
-                    width: '100%',
-                    maxWidth: 300,
-                    height: 'auto',
-                    margin: 'auto',
+                    display: "flex",
+                    justifyContent: "center",
+                    p: 1,
+                    m: 1,
+                    bgcolor: "background.paper",
+                    borderRadius: 1,
                   }}
-                />
-                <Typography
-                  align="center"
-                  gutterBottom
-                  variant="h5"
-                  component="div"
                 >
-                  Poszło!
-                </Typography>
-                <Typography
-                  align="center"
-                  variant="body2"
-                  color="text.secondary"
-                >
-                  Ankieta przyjdzie na podany adres e-mail ;)
-                </Typography>
-              </>
-            )}
-          </CardContent>
-        </Card>
-      </Container>
-    </ThemeProvider>
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    type="submit"
+                    disabled={!!emailError || isLoading}
+                  >
+                    {isLoading ? (
+                      <>
+                        <CircularProgress size={24} />
+                      </>
+                    ) : (
+                      <>
+                        Wyślij ankietę
+                        <span style={{ fontSize: "1.4rem", marginTop: -10 }}>
+                          📨
+                        </span>
+                      </>
+                    )}
+                  </Button>
+                </Box>
+              </form>
+            </>
+          )}
+          {emailSent && (
+            <>
+              <CardMedia
+                component="img"
+                image="/img/undraw_Letter_re_8m03.png"
+                alt="img"
+                sx={{
+                  width: "100%",
+                  maxWidth: 300,
+                  height: "auto",
+                  margin: "auto",
+                }}
+              />
+              <Typography
+                align="center"
+                gutterBottom
+                variant="h5"
+                component="div"
+              >
+                Poszło!
+              </Typography>
+              <Typography align="center" variant="body2" color="text.secondary">
+                Ankieta przyjdzie na podany adres e-mail ;)
+              </Typography>
+            </>
+          )}
+        </CardContent>
+      </Card>
+    </Container>
   );
 };
 
