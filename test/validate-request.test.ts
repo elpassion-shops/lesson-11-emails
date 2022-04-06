@@ -1,31 +1,5 @@
-import {
-  IsEmail,
-  IsInt,
-  IsString,
-  Max,
-  Min,
-  validate,
-  ValidateNested,
-} from "class-validator";
-
-class Answer {
-  @IsString()
-  id!: string;
-
-  @IsInt()
-  @Min(1)
-  @Max(5)
-  choice!: number;
-}
-
-class Request {
-  @IsString()
-  @IsEmail()
-  email!: string;
-
-  @ValidateNested({ each: true })
-  answers!: Answer[];
-}
+import { validate } from "class-validator";
+import { Answer, Request } from "../dtos/request";
 
 function generateRequest(overrides: { email?: any; answers?: any }) {
   const request = new Request();
