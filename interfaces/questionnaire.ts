@@ -42,7 +42,7 @@ export class AnswerClose implements IAnswer {
   @Max(5)
   value?: number;
 
-  constructor(value: number) {
+  constructor(value?: number) {
     this.value = value;
   }
 }
@@ -53,7 +53,7 @@ export class AnswerOpen implements IAnswer {
   @IsString()
   value?: string;
 
-  constructor(value: string) {
+  constructor(value?: string) {
     this.value = value;
   }
 }
