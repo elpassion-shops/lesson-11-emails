@@ -154,7 +154,7 @@ describe('tests for Question', () => {
     @IsString()
     question!: string;
 
-    @ValidateNested()
+    @ValidateNested({ each: true })
     answer?: IAnswer | null;
   }
 
@@ -244,6 +244,12 @@ describe('tests for Question', () => {
 
     test('should fails with boolean in answer', async () => {
       const questionInvalid = generateQuestion({ answer: true });
+      expect(await validate(questionInvalid)).toMatchSnapshot();
+    });
+
+    test('should fails with invalid answer', async () => {
+      const answerCloseValid = generateAnswerClose({});
+      const questionInvalid = generateQuestion({ answer: answerCloseValid });
       expect(await validate(questionInvalid)).toMatchSnapshot();
     });
   });
