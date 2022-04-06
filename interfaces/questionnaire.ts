@@ -1,4 +1,5 @@
 import {
+  IsArray,
   IsEmail,
   IsInt,
   IsOptional,
@@ -7,6 +8,7 @@ import {
   Min,
   ValidateNested,
 } from "class-validator";
+import { Type } from "class-transformer";
 
 export interface IAnswer {
   isOpen: boolean;
@@ -27,7 +29,7 @@ export interface IQuestionnaire {
 }
 
 export interface IQuestionnaireResponse {
-  questionnaire: IQuestionnaire;
+  questionnaireResponse: IQuestionnaire;
 }
 
 export interface IQuestionnaireRequest {
@@ -67,6 +69,7 @@ export class Question implements IQuestion {
   question: string;
 
   @ValidateNested()
+  @Type(() => AnswerClose)
   answer: IAnswer;
 
   constructor(id: number, question: string, answer: IAnswer) {
@@ -85,11 +88,13 @@ export class Questionnaire implements IQuestionnaire {
   title;
 
   @ValidateNested({ each: true })
-  questions;
+  @IsArray()
+  @Type(() => Question)
+  questions: Question[];
 
-  @IsOptional()
-  @IsEmail()
-  email?;
+  // @IsOptional()
+  // @IsEmail()
+  // email?;
 
   constructor(
     id: number,
@@ -100,6 +105,6 @@ export class Questionnaire implements IQuestionnaire {
     this.id = id;
     this.title = title;
     this.questions = questions;
-    this.email = email;
+    // this.email = email;
   }
 }
