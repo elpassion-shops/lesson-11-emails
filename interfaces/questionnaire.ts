@@ -1,6 +1,7 @@
 import {
   IsEmail,
   IsInt,
+  IsNotIn,
   IsOptional,
   IsString,
   Max,
@@ -11,12 +12,15 @@ import {
 export interface IAnswer {
   isOpen: boolean;
   value?: number | string | null;
+  questionId?: number;
+
 }
 
 export interface IQuestion {
   id: number;
   question: string;
-  answer: IAnswer;
+  answer?: IAnswer;
+  isOpen?: boolean | null;
 }
 
 export interface IQuestionnaire {
@@ -24,7 +28,6 @@ export interface IQuestionnaire {
   title: string;
   questions: IQuestion[];
   email?: string | null;
-  isOpen?: boolean | null;
 }
 
 export interface IQuestionnaireResponse {
@@ -40,9 +43,17 @@ export interface IAnswersRequest {
   email: string;
 }
 
+export class Answer implements IAnswer{
+  isOpen: boolean;
+  questionId: number;
+  @IsNotIn([0,"",null,undefined])
+  value: string | number;
+
+}
+
 export class AnswerRequest {
-  @ValidateNested({ each: true })
-  answers: IAnswer[];
+  @ValidateNested({each: true})
+  answers: Answer[];
 
   @IsEmail()
   email: string;

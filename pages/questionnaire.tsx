@@ -89,7 +89,7 @@ const Home: NextPage = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  // Transformacja i wysyłanie danych
+  // Wysyłanie danych
   const onSubmitHandler = useCallback((data) => {
     setLoading(true);
     api
@@ -122,7 +122,8 @@ const Home: NextPage = () => {
                         <Controller
                           name={`email`}
                           control={control}
-                          defaultValue={0}
+                          defaultValue={''}
+                          //pozwala na wsadzanie MUI
                           render={(props) =>
                               <TextField
                                 sx={{ margin: "auto" }}
