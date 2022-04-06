@@ -36,3 +36,99 @@ Array [
   },
 ]
 `;
+
+exports[`fails with incorect answer 1`] = `
+Array [
+  ValidationError {
+    "children": Array [
+      ValidationError {
+        "children": Array [
+          ValidationError {
+            "children": Array [],
+            "constraints": Object {
+              "isString": "id must be a string",
+            },
+            "property": "id",
+            "target": Answer {},
+            "value": undefined,
+          },
+          ValidationError {
+            "children": Array [],
+            "constraints": Object {
+              "isInt": "choice must be an integer number",
+              "max": "choice must not be greater than 5",
+              "min": "choice must not be less than 1",
+            },
+            "property": "choice",
+            "target": Answer {},
+            "value": undefined,
+          },
+        ],
+        "property": "0",
+        "target": Array [
+          Answer {},
+        ],
+        "value": Answer {},
+      },
+    ],
+    "property": "answers",
+    "target": Request {
+      "answers": Array [
+        Answer {},
+      ],
+      "email": "mihau@gmail.com",
+    },
+    "value": Array [
+      Answer {},
+    ],
+  },
+]
+`;
+
+exports[`fails with incorrect answer 1`] = `
+Array [
+  ValidationError {
+    "children": Array [
+      ValidationError {
+        "children": Array [
+          ValidationError {
+            "children": Array [],
+            "constraints": Object {
+              "isString": "id must be a string",
+            },
+            "property": "id",
+            "target": Answer {},
+            "value": undefined,
+          },
+          ValidationError {
+            "children": Array [],
+            "constraints": Object {
+              "isInt": "choice must be an integer number",
+              "max": "choice must not be greater than 5",
+              "min": "choice must not be less than 1",
+            },
+            "property": "choice",
+            "target": Answer {},
+            "value": undefined,
+          },
+        ],
+        "property": "0",
+        "target": Array [
+          Answer {},
+        ],
+        "value": Answer {},
+      },
+    ],
+    "property": "answers",
+    "target": Request {
+      "answers": Array [
+        Answer {},
+      ],
+      "email": "mihau@gmail.com",
+    },
+    "value": Array [
+      Answer {},
+    ],
+  },
+]
+`;

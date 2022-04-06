@@ -1,8 +1,21 @@
-import { IsEmail, IsString, validate, ValidateNested } from "class-validator";
+import {
+  IsEmail,
+  IsInt,
+  IsString,
+  Max,
+  Min,
+  validate,
+  ValidateNested,
+} from "class-validator";
 
 class Answer {
   @IsString()
   id!: string;
+
+  @IsInt()
+  @Min(1)
+  @Max(5)
+  choice!: number;
 }
 
 class Request {
@@ -70,7 +83,7 @@ test("fails with empty answers", async () => {
   ]);
 });
 
-test("fails with answer without id", async () => {
+test("fails with incorrect answer", async () => {
   const request = generateRequest({ answers: [new Answer()] });
   expect(await validate(request)).toMatchSnapshot();
 });
