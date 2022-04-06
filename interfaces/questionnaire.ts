@@ -6,7 +6,7 @@ import {
   Max,
   Min,
   ValidateNested,
-} from "class-validator";
+} from 'class-validator';
 
 export interface IAnswer {
   isOpen: boolean;
@@ -101,5 +101,20 @@ export class Questionnaire implements IQuestionnaire {
     this.title = title;
     this.questions = questions;
     this.email = email;
+  }
+}
+
+export class GetQuestionnaire implements IQuestionnaireRequest {
+  constructor(public id: number) {}
+
+  async send(request: IQuestionnaireRequest) {
+    console.log(request.id);
+    await fetch(`http://localhost:3000/questionnaire/{id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(request),
+    });
   }
 }
