@@ -45,3 +45,14 @@ class AnswerClose implements IAnswer {
     this.value = value;
   }
 }
+
+class AnswerOpen implements IAnswer {
+  isOpen = true;
+
+  @IsString()
+  value?: string;
+
+  constructor(value: string) {
+    this.value = value;
+  }
+}
