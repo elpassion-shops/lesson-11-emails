@@ -56,3 +56,21 @@ class AnswerOpen implements IAnswer {
     this.value = value;
   }
 }
+
+class Question implements IQuestion {
+  @IsInt()
+  @Min(1)
+  id: number;
+
+  @IsString()
+  question: string;
+
+  @ValidateNested()
+  answer: IAnswer;
+
+  constructor(id: number, question: string, answer: IAnswer) {
+    this.id = id;
+    this.question = question;
+    this.answer = answer;
+  }
+}
