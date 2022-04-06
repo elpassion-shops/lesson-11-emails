@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fails with incorrect answer 1`] = `
+Array [
+  ValidationError {
+    "children": Array [
+      ValidationError {
+        "children": Array [
+          ValidationError {
+            "children": Array [],
+            "constraints": Object {
+              "isNotIn": "value should not be one of the following values: 0, , , ",
+            },
+            "property": "value",
+            "target": Answer {},
+            "value": undefined,
+          },
+        ],
+        "property": "0",
+        "target": Array [
+          Answer {},
+        ],
+        "value": Answer {},
+      },
+    ],
+    "property": "answers",
+    "target": AnswerRequest {
+      "answers": Array [
+        Answer {},
+      ],
+      "email": "bugajewska.m@gmail.com",
+    },
+    "value": Array [
+      Answer {},
+    ],
+  },
+]
+`;
+
+exports[`passes with correct answers 1`] = `Array []`;
+
+exports[`passes with incorrect answer value 1`] = `
+Array [
+  ValidationError {
+    "children": Array [
+      ValidationError {
+        "children": Array [
+          ValidationError {
+            "children": Array [],
+            "constraints": Object {
+              "isNotIn": "value should not be one of the following values: 0, , , ",
+            },
+            "property": "value",
+            "target": Answer {
+              "questionId": 1,
+              "value": 0,
+            },
+            "value": 0,
+          },
+        ],
+        "property": "0",
+        "target": Array [
+          Answer {
+            "questionId": 1,
+            "value": 0,
+          },
+        ],
+        "value": Answer {
+          "questionId": 1,
+          "value": 0,
+        },
+      },
+    ],
+    "property": "answers",
+    "target": AnswerRequest {
+      "answers": Array [
+        Answer {
+          "questionId": 1,
+          "value": 0,
+        },
+      ],
+      "email": "bugajewska.m@gmail.com",
+    },
+    "value": Array [
+      Answer {
+        "questionId": 1,
+        "value": 0,
+      },
+    ],
+  },
+]
+`;

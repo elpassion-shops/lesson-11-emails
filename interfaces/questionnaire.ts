@@ -46,7 +46,7 @@ export interface IAnswersRequest {
 export class Answer implements IAnswer{
   isOpen: boolean;
   questionId: number;
-  @IsNotIn([0,"",null,undefined])
+  @IsNotIn(["0",0,"",null,undefined])
   value: string | number;
 
 }
