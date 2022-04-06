@@ -1,13 +1,16 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import * as QueryString from "querystring";
 import {
+  AnswerClose,
   IAnswer,
   IQuestion,
   IQuestionnaire,
   IQuestionnaireResponse,
+  Question,
+  Questionnaire,
 } from "../../../interfaces/questionnaire";
 import { GetQuestionnairesDto } from "../../../dto/get_questionnaries.dto";
-import { validate, validateOrReject } from "class-validator";
+import { validateOrReject } from "class-validator";
 
 export default async function handler(
   req: NextApiRequest,
@@ -21,12 +24,12 @@ export default async function handler(
     };
     const question: IQuestion = {
       id: 1,
-      question: "What is your name?",
+      question: "Rate bootcamp, please!",
       answer: answer1,
     };
     const questionnaire: IQuestionnaire = {
       id: Number(pid),
-      title: "Test",
+      title: "Test questionnaire",
       questions: [question],
     };
     const questionnaireResponse: IQuestionnaireResponse = {
@@ -39,11 +42,20 @@ export default async function handler(
     });
     try {
       await validateOrReject(getQuestionnaire);
-      res.status(201).json({});
+      res.status(201).json({ questionnaireResponse });
     } catch (e: any) {
       res.status(400).json({ errorArray: e[0].constraints });
     }
   }
   if (req.method === "POST") {
+    const answer = new AnswerClose(3);
+    const question1 = new Question(1, "Rate bootcamp, please!", answer);
+    const questionnaire1 = new Questionnaire(1, "Test questionnaire", []);
+    try {
+      await validateOrReject(questionnaire1);
+      res.status(20).json({ questionnaire1 });
+    } catch (e: any) {
+      res.status(500).json({ errorArray: e[0].constraints });
+    }
   }
 }
