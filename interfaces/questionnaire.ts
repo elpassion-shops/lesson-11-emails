@@ -1,11 +1,12 @@
 import {
   IsEmail,
   IsInt,
+  IsOptional,
   IsString,
   Max,
   Min,
   ValidateNested,
-} from 'class-validator';
+} from "class-validator";
 
 export interface IAnswer {
   isOpen: boolean;
@@ -86,6 +87,7 @@ export class Questionnaire implements IQuestionnaire {
   @ValidateNested({ each: true })
   questions;
 
+  @IsOptional()
   @IsEmail()
   email?;
 
