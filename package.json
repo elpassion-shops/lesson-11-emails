@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@hookform/resolvers": "^2.8.8",
     "@mui/material": "^5.5.3",
     "@sendgrid/mail": "^7.6.2",
     "class-validator": "^0.13.2",

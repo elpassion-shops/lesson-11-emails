@@ -1,39 +1,76 @@
-import { useRouter } from "next/router";
-import React from "react";
-import ReactDOM from "react-dom";
-import { useForm, SubmitHandler } from "react-hook-form";
 
-enum GenderEnum {
-    female = "female",
-    male = "male",
-    other = "other"
-  }
-  interface IFormInput {
-    firstName: String;
-    gender: GenderEnum;
+import { useForm } from "react-hook-form";
+import { classValidatorResolver } from "@hookform/resolvers/class-validator";
+import {
+  IsEmail,
+  IsInt,
+  IsString,
+  Max,
+  Min,
+  ValidateNested,
+} from "class-validator";
+
+
+
+export class Request {
+    @IsString()
+    @IsEmail()
+    email!: string;
+  
+    @ValidateNested({ each: true })
+    answers!: Answer[];
   }
   
+  export class Answer {
+    @IsString()
+    id!: string;
+  
+    @IsInt()
+    @Min(1)
+    @Max(5)
+    choice!: number;
+  }
+  
+  export class Question {
+    @IsString()
+    id!: string;
+  
+    @IsInt()
+    @Min(1)
+    @Max(5)
+    choice!: number;
+  }
 
-//const resolver = classValidatorResolver
-function Questionnaire() {
+export default function Questionnaire() {
 
-  const { register, handleSubmit } = useForm<IFormInput>();
-  const onSubmit = (data: IFormInput) => console.log(data);
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = (data: any) => console.log(data);
+  //const resolver = classValidatorResolver(Request);
+  const QAndA = [{
+    question: "pytanie pierwsze",
+    id: "pies",
+    answers: [1, 2, 3, 4, 5]
+  },
+  {
+    question: "pytanie drugie",
+    id: "kot",
+    answers: [1, 2, 3, 4, 5]
+  }]
 
-  return (
-    <form >
-      <label>First Name</label>
-      <input {...register("firstName")} />
-      <label>Gender Selection</label>
-      <select {...register("gender")}>
-        <option value="female">female</option>
-        <option value="male">male</option>
-        <option value="other">other</option>
-      </select>
+
+  return ( 
+    <form onSubmit={handleSubmit(onSubmit)}>
+      {QAndA.map(qa => {
+        return <>
+        <p>{qa.question}</p>
+        {qa.answers.map(answer=> {
+          return <input {...register(qa.id, {required: true})} type="radio" value={answer} />
+        })}
+        </>
+      })}
+
       <input type="submit" />
     </form>
   );
 }
 
-  export default Questionnaire;
-  
