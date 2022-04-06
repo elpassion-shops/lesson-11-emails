@@ -1,19 +1,29 @@
+import {
+  IsEmail,
+  IsInt,
+  IsOptional,
+  IsString,
+  Max,
+  Min,
+  ValidateNested,
+} from "class-validator";
+
 export interface IAnswer {
   isOpen: boolean;
-  value: string | number;
+  value?: number | string | null;
 }
 
 export interface IQuestion {
   id: number;
   question: string;
-  answer?: IAnswer | null;
+  answer: IAnswer;
 }
 
 export interface IQuestionnaire {
   id: number;
   title: string;
-  email?: string | null;
   questions: IQuestion[];
+  email?: string | null;
 }
 
 export interface IQuestionnaireResponse {
@@ -21,30 +31,75 @@ export interface IQuestionnaireResponse {
 }
 
 export interface IQuestionnaireRequest {
-  id: string;
+  id: number;
 }
 
-abstract class Answer implements IAnswer {
-  abstract isOpen: boolean;
-  constructor(public value: string | number) {}
-}
+export class AnswerClose implements IAnswer {
+  isOpen = false;
 
-export class AnswerOpen extends Answer {
-  isOpen = true;
-  value: string;
+  @IsInt()
+  @Min(1)
+  @Max(5)
+  value?: number;
 
-  constructor(value: string) {
-    super(value);
+  constructor(value: number) {
     this.value = value;
   }
 }
 
-export class AnswerClose extends Answer {
-  isOpen = false;
-  value = 0;
+export class AnswerOpen implements IAnswer {
+  isOpen = true;
 
-  constructor(value: number) {
-    super(value);
+  @IsString()
+  value?: string;
+
+  constructor(value: string) {
     this.value = value;
+  }
+}
+
+export class Question implements IQuestion {
+  @IsInt()
+  @Min(1)
+  id: number;
+
+  @IsString()
+  question: string;
+
+  @ValidateNested()
+  answer: IAnswer;
+
+  constructor(id: number, question: string, answer: IAnswer) {
+    this.id = id;
+    this.question = question;
+    this.answer = answer;
+  }
+}
+
+export class Questionnaire implements IQuestionnaire {
+  @IsInt()
+  @Min(1)
+  id;
+
+  @IsString()
+  title;
+
+  @ValidateNested({ each: true })
+  questions;
+
+  @IsOptional()
+  @IsEmail()
+  email?;
+
+  constructor(
+    id: number,
+    title: string,
+    questions: IQuestion[],
+    email?: string | null
+  ) {
+    this.id = id;
+    this.title = title;
+    this.questions = questions;
+    this.email = email;
   }
 }
