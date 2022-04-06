@@ -1,6 +1,15 @@
+import {
+  IsEmail,
+  IsInt,
+  IsString,
+  Max,
+  Min,
+  ValidateNested,
+} from 'class-validator';
+
 export interface IAnswer {
   isOpen: boolean;
-  value?: string | null;
+  value?: number | string | null;
 }
 
 export interface IQuestion {
@@ -12,8 +21,8 @@ export interface IQuestion {
 export interface IQuestionnaire {
   id: number;
   title: string;
-  email?: string | null;
   questions: IQuestion[];
+  email?: string | null;
 }
 
 export interface IQuestionnaireResponse {
@@ -22,4 +31,17 @@ export interface IQuestionnaireResponse {
 
 export interface IQuestionnaireRequest {
   id: number;
+}
+
+class AnswerClose implements IAnswer {
+  isOpen = false;
+
+  @IsInt()
+  @Min(1)
+  @Max(5)
+  value?: number;
+
+  constructor(value: number) {
+    this.value = value;
+  }
 }
